@@ -46,8 +46,7 @@ export default {
         transition: .45s ease;
         position: absolute;
         overflow: hidden;
-        cursor: pointer;
-        z-index: 4;
+        z-index: 1;
 
         .logo {
             top: 0;
@@ -78,6 +77,7 @@ export default {
                 letter-spacing: .5px;
                 font-size: 1rem;
                 color: var(--pf-gray-300);
+                cursor: pointer;
             }
 
             .text_left {
@@ -99,6 +99,10 @@ export default {
 
         &:hover .btn_in {
             transform: translateX(0px);
+        }
+
+        &:hover .project_image {
+            scale: 2;
         }
 
         &:hover .btn_in .text_left {
