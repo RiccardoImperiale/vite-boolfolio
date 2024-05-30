@@ -6,11 +6,15 @@
   --pf-gray-600: #434343;
   --pf-gray-700: #242424;
   --pf-gray-800: #1D1D1D;
+  /* --pf-gray-900: #181818; */
   --pf-gray-900: #0e0e0e;
+
   --pf-darker: black;
 
   --pf-cursor: #EBEBEB;
 
+  --pf-accent-1: #B69B00;
+  --pf-accent-b: #05FF00;
   --pf-accent: #154ccb;
 }
 
@@ -39,3 +43,112 @@ body {
   max-width: 1240px;
   margin: auto;
 }
+
+.no_select {
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
+#hero,
+#about,
+#works,
+#contact {
+  position: relative;
+}
+
+.section_title {
+  text-align: center;
+  color: var(--pf-gray-600);
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 500;
+  z-index: 2;
+
+  .dot {
+    background-color: greenyellow;
+    width: 5px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+.text {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+
+  & p {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--pf-gray-100);
+    line-height: 4rem;
+    text-transform: capitalize;
+  }
+}
+
+.btn {
+  background-color: var(--pf-gray-700);
+  background-color: var(--pf-accent);
+  margin: auto;
+  display: block;
+  width: 75px;
+  height: 75px;
+  border-radius: 80px;
+  border: none;
+  transition: .45s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+
+  .btn_in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    transform: translateX(-16px);
+    transition: .3s ease;
+
+    & img {
+      margin-bottom: 5px;
+    }
+
+    span {
+      font-family: "Syne", sans-serif;
+      white-space: nowrap;
+      letter-spacing: .5px;
+      font-size: 1.3rem;
+      color: var(--pf-gray-300);
+    }
+  }
+
+}
+
+.icon3d {
+  z-index: 1;
+}
+
+.icon3d,
+.violet_blur,
+.violet_blur2,
+.violet_blur3 {
+  position: absolute;
+}
+
+.violet_blur,
+.violet_blur2,
+.violet_blur3 {
+  opacity: 0.8;
+}
+
+/* .line {
+  border-bottom: 2px solid var(--pf-gray-700);
+  width: 100%;
+  padding: 2rem 0;
+} */

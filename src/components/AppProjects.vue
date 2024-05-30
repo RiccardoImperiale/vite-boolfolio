@@ -72,7 +72,10 @@ export default {
 
 <style scoped>
 .projects_container {
-    padding: 5rem 0;
+    height: 920px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .projects {
         width: 100%;
@@ -102,11 +105,10 @@ export default {
         margin-top: 2rem;
         height: 65px;
         border-radius: 65px;
-        background-color: var(--pf-gray-900);
+        /* background-color: var(--pf-gray-900); */
 
         & button {
-            background-color: var(--pf-accent);
-            color: var(--pf-gray-100);
+            background-color: var(--pf-gray-900);
             width: 50px;
             aspect-ratio: 1;
             border-radius: 50px;
@@ -115,10 +117,11 @@ export default {
             align-items: center;
             justify-content: center;
             transition: .25s ease;
+            border: 1px solid var(--pf-gray-700);
 
             &:hover {
+                background-color: var(--pf-gray-300);
                 background-color: var(--pf-gray-700);
-                background-color: #0a3497;
                 cursor: pointer;
             }
 
@@ -136,7 +139,7 @@ export default {
             width: 15px;
             height: 15px;
             background-color: var(--pf-gray-700);
-            transition: .25s ease;
+            transition: .5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
