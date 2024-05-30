@@ -31,6 +31,10 @@ export default {
         },
         nextPage(url) {
             this.callApi(url);
+        },
+        goTo(page) {
+            const url = this.base_api_url + this.base_projects_url + `?page=${page}`
+            this.callApi(url)
         }
     },
     mounted() {
@@ -51,8 +55,9 @@ export default {
                 <button @click="prevPage(projects.prev_page_url)">
                     <img class="arrow_left" width="10" src="/img/arrow-light.png" alt="arrow icon">
                 </button>
-                <button class="page_dot" v-for="page in projects.last_page">
-                    <span>{{ page }}</span>
+                <button class="page_dot" v-for="page in projects.last_page" @click="goTo(page)">
+                    <div :class="{ 'dot_active': page == projects.current_page }"></div>
+                    <!-- <span>{{ page }}</span> -->
                 </button>
                 <button @click="nextPage(projects.next_page_url)">
                     <img class="arrow_right" width="10" src="/img/arrow-light.png" alt="arrow icon">
@@ -75,6 +80,8 @@ export default {
     gap: 1rem;
 }
 
+
+
 .pagination_container {
     display: flex;
     justify-content: center;
@@ -84,10 +91,10 @@ export default {
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        padding-inline: 5px;
+        padding-inline: 7.5px;
         margin-top: 1rem;
-        height: 60px;
-        border-radius: 60px;
+        height: 65px;
+        border-radius: 65px;
         background-color: var(--pf-gray-900);
 
         & button {
@@ -95,36 +102,55 @@ export default {
             color: var(--pf-gray-100);
             width: 50px;
             aspect-ratio: 1;
-            border-radius: 40px;
+            border-radius: 50px;
             border: none;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: .25s ease;
 
             &:hover {
-                background-color: var(--pf-gray-300);
+                background-color: var(--pf-gray-700);
+                background-color: #0a3497;
+                cursor: pointer;
             }
 
             .arrow_left {
                 rotate: 180deg;
-                transform: translateX(1px);
+                transform: translateX(2px);
             }
 
+            .arrow_right {
+                transform: translateX(2px);
+            }
         }
 
         .page_dot {
             width: 15px;
             height: 15px;
-            background-color: var(--pf-gray-800);
+            background-color: var(--pf-gray-700);
             transition: .25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
 
-            & span {
+            .dot_active {
+                position: absolute;
+                top: 20px;
+                width: 4px;
+                height: 4px;
+                background-color: var(--pf-lighter);
+                border-radius: 50%;
+            }
+
+            /* & span {
                 color: var(--pf-gray-300);
                 position: relative;
                 top: 17px;
                 font-size: 0.7rem;
                 transition: .5s ease;
-            }
+            } */
 
             &:hover {
                 background-color: var(--pf-gray-300);
@@ -132,9 +158,13 @@ export default {
 
             &:hover span {
                 color: var(--pf-gray-900);
-
             }
         }
+
+        /* .page_dot.page-active {
+            background-color: var(--pf-gray-100);
+        } */
+
     }
 }
 </style>
