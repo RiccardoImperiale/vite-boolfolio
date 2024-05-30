@@ -46,11 +46,14 @@ export default {
 
 <template>
     <div class="container projects_container">
-        <div class="projects">
+        <div v-if="!loading" class="projects">
             <ProjectCard v-for="project in projects.data" :key="project.id"
                 :imageSrc="base_api_url + '/storage/' + project.image" />
         </div>
-        <div class="pagination_container">
+        <div class="loader" v-else>
+            Loading...
+        </div>
+        <div v-if="projects.last_page > 1" class="pagination_container">
             <div class="pagination">
                 <button @click="prevPage(projects.prev_page_url)">
                     <img class="arrow_left" width="10" src="/img/arrow-light.png" alt="arrow icon">
@@ -69,18 +72,22 @@ export default {
 
 <style scoped>
 .projects_container {
-    padding-top: 5rem 0;
+    padding: 5rem 0;
 
+    .projects {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 }
 
-.projects {
-    width: 100%;
+.loader {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--pf-gray-100);
 }
-
-
 
 .pagination_container {
     display: flex;
@@ -92,7 +99,7 @@ export default {
         align-items: center;
         gap: 1rem;
         padding-inline: 7.5px;
-        margin-top: 1rem;
+        margin-top: 2rem;
         height: 65px;
         border-radius: 65px;
         background-color: var(--pf-gray-900);
