@@ -11,9 +11,11 @@ export default {
 <template>
     <div class="project_card">
         <button class="btn">
+            <div class="logo">
+                <img width="25" src="/img/logo-gray100.png" alt="">
+            </div>
             <div class="btn_in">
                 <span class="text_left">Live Version</span>
-                <img width="25" src="/img/logo-gray100.png" alt="">
                 <span class="text_right">Source Code</span>
             </div>
         </button>
@@ -35,16 +37,47 @@ export default {
     justify-content: center;
 
     .btn {
-        position: absolute;
         cursor: default;
+        background-color: var(--pf-accent);
+        width: 75px;
+        height: 75px;
+        border-radius: 75px;
+        border: none;
+        transition: .45s ease;
+        position: absolute;
+        overflow: hidden;
+        cursor: pointer;
+        z-index: 4;
+
+        .logo {
+            top: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & img {
+                margin-bottom: 5px;
+            }
+        }
 
         .btn_in {
-            transform: translateX(3.5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5rem;
+            transform: translateX(-16px);
+            transition: .3s ease;
 
             .text_left,
             .text_right {
+                font-family: "Syne", sans-serif;
+                white-space: nowrap;
+                letter-spacing: .5px;
                 font-size: 1rem;
-                cursor: pointer;
+                color: var(--pf-gray-300);
             }
 
             .text_left {
