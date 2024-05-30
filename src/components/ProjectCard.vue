@@ -10,7 +10,14 @@ export default {
 
 <template>
     <div class="project_card">
-        <img :src="imageSrc" alt="">
+        <button class="btn">
+            <div class="btn_in">
+                <span class="text_left">Live Version</span>
+                <img width="25" src="/img/logo-gray100.png" alt="">
+                <span class="text_right">Source Code</span>
+            </div>
+        </button>
+        <img class="project_image" :src="imageSrc" alt="">
     </div>
 </template>
 
@@ -18,13 +25,60 @@ export default {
 .project_card {
     display: block;
     width: 100%;
-    background-color: rgb(80, 80, 80);
     aspect-ratio: 1;
     border-radius: .5rem;
     z-index: 1;
     overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    & img {
+    .btn {
+        position: absolute;
+        cursor: default;
+
+        .btn_in {
+            transform: translateX(3.5px);
+
+            .text_left,
+            .text_right {
+                font-size: 1rem;
+                cursor: pointer;
+            }
+
+            .text_left {
+                transform: translateX(-150px);
+                transition: .5s ease;
+            }
+
+            .text_right {
+                transform: translateX(150px);
+                transition: .5s ease;
+            }
+        }
+
+        &:hover {
+            width: 350px;
+            background-color: var(--pf-gray-700);
+            z-index: 0;
+        }
+
+        &:hover .btn_in {
+            transform: translateX(0px);
+        }
+
+        &:hover .btn_in .text_left {
+            transform: translateX(0);
+        }
+
+        &:hover .btn_in .text_right {
+            transform: translateX(0);
+        }
+    }
+
+
+    .project_image {
         width: 100%;
         aspect-ratio: 1;
         object-fit: cover;

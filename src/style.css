@@ -39,3 +39,41 @@ body {
   max-width: 1240px;
   margin: auto;
 }
+
+.btn {
+  background-color: var(--pf-gray-700);
+  background-color: var(--pf-accent);
+  margin: auto;
+  display: block;
+  width: 75px;
+  height: 75px;
+  border-radius: 80px;
+  border: none;
+  transition: .45s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+
+  .btn_in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    transform: translateX(-16px);
+    transition: .3s ease;
+
+    & img {
+      margin-bottom: 5px;
+    }
+
+    span {
+      font-family: "Syne", sans-serif;
+      white-space: nowrap;
+      letter-spacing: .5px;
+      font-size: 1.3rem;
+      color: var(--pf-gray-300);
+    }
+  }
+
+}
