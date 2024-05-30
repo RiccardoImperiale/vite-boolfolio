@@ -56,14 +56,14 @@ export default {
         <div v-if="projects.last_page > 1" class="pagination_container">
             <div class="pagination">
                 <button @click="prevPage(projects.prev_page_url)">
-                    <img class="arrow_left" width="10" src="/img/arrow-light.png" alt="arrow icon">
+                    <img class="arrow_left" width="7" src="/img/arrow.png" alt="arrow icon">
                 </button>
                 <button class="page_dot" v-for="page in projects.last_page" @click="goTo(page)">
                     <div :class="{ 'dot_active': page == projects.current_page }"></div>
                     <!-- <span>{{ page }}</span> -->
                 </button>
                 <button @click="nextPage(projects.next_page_url)">
-                    <img class="arrow_right" width="10" src="/img/arrow-light.png" alt="arrow icon">
+                    <img class="arrow_right" width="7" src="/img/arrow.png" alt="arrow icon">
                 </button>
             </div>
         </div>
@@ -122,13 +122,13 @@ export default {
                 cursor: pointer;
             }
 
-            .arrow_left {
-                rotate: 180deg;
-                transform: translateX(2px);
+            .arrow_left,
+            .arrow_right {
+                transform: translateX(1px);
             }
 
-            .arrow_right {
-                transform: translateX(2px);
+            .arrow_left {
+                rotate: 180deg;
             }
         }
 
