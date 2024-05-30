@@ -1,0 +1,41 @@
+:root {
+  --pf-lighter: white;
+  --pf-gray-100: #CFCFCF;
+  --pf-gray-200: #BCBCBC;
+  --pf-gray-300: #878786;
+  --pf-gray-600: #434343;
+  --pf-gray-700: #242424;
+  --pf-gray-800: #1D1D1D;
+  --pf-gray-900: #0e0e0e;
+  --pf-darker: black;
+
+  --pf-cursor: #EBEBEB;
+
+  --pf-accent: #154ccb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-color: var(--pf-gray-300) var(--pf-gray-800);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* overflow: overlay; */
+  overflow-x: hidden;
+  background-color: var(--pf-gray-800);
+  width: 100vw;
+  font-family: "Syne", sans-serif;
+}
+
+.container {
+  width: 80%;
+  max-width: 1240px;
+  margin: auto;
+}
