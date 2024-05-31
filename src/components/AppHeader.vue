@@ -14,19 +14,25 @@ export default {
 <template>
     <header @mouseover="isOver(true)" @mouseleave="isOver(false)">
         <nav>
-            <img class="logo" width=35 src="/img/logo-wt.png" alt="logo">
+            <router-link class="nav_link" to="/">
+                <img class="logo" width=35 src="/img/logo-wt.png" alt="logo">
+            </router-link>
             <div class="page_links">
                 <div class="link_container">
-                    <a href="#about">ABOUT</a>
-                    <a href="#about">ABOUT</a>
+                    <router-link class="nav_link" to="/">HOME</router-link>
+                    <router-link class="nav_link" to="/">HOME</router-link>
                 </div>
                 <div class="link_container">
-                    <a href="#works">WORKS</a>
-                    <a href="#works">WORKS</a>
+                    <router-link class="nav_link" to="/about">ABOUT</router-link>
+                    <router-link class="nav_link" to="/about">ABOUT</router-link>
                 </div>
                 <div class="link_container">
-                    <a href="#contact">CONTACT</a>
-                    <a href="#contact">CONTACT</a>
+                    <router-link class="nav_link" to="/works">WORKS</router-link>
+                    <router-link class="nav_link" to="/works">WORKS</router-link>
+                </div>
+                <div class="link_container">
+                    <router-link class="nav_link" to="/contact">CONTACT</router-link>
+                    <router-link class="nav_link" to="/contact">CONTACT</router-link>
                 </div>
             </div>
         </nav>
@@ -63,11 +69,11 @@ header {
                 overflow: hidden;
                 height: 20px;
 
-                &:hover a {
+                &:hover .nav_link {
                     transform: translateY(-20px);
                 }
 
-                & a {
+                .nav_link {
                     display: block;
                     text-decoration: none;
                     color: white;
@@ -76,7 +82,7 @@ header {
                     transition: .3s ease;
                 }
 
-                & a:nth-of-type(2) {
+                .nav_link:nth-of-type(2) {
                     padding-top: 2px;
                 }
             }
