@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
+import { store } from '../store.js'
 
 export default {
     name: 'ProjectsFeatured',
@@ -12,7 +13,7 @@ export default {
             base_api_url: 'http://127.0.0.1:8000',
             base_projects_url: '/api/featured',
             projects: [],
-            loading: true
+            loading: store.loading
         }
     },
     methods: {
@@ -20,9 +21,9 @@ export default {
             axios
                 .get(url)
                 .then(res => {
-                    console.log(res);
                     this.projects = res.data.projects
-                    this.loading = false
+                    store.loading = false
+                    this.loading = store.loading
                 })
                 .catch(err => console.error(err))
         }
@@ -30,7 +31,11 @@ export default {
     mounted() {
         let url = this.base_api_url + this.base_projects_url;
         this.callApi(url);
-    },
+
+        this.$watch(() => store.loading, (newVal) => {
+            this.loading = newVal;
+        });
+    }
 }
 </script>
 

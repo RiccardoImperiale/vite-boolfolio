@@ -4,26 +4,41 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { store } from '../store.js';
+
 export default {
     name: 'OvalTransition',
+    data() {
+        return {
+            loading: store.loading
+        }
+    },
+    methods: {
+        animateOval() {
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: this.$refs.oval,
+                    start: '-800rem top bottom',
+                    end: 'bottom top',
+                    scrub: true,
+                }
+            });
+            timeline.to(this.$refs.oval, {
+                height: '0px'
+            });
+        }
+    },
     mounted() {
-        const timeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: this.$refs.oval,
-                start: '-800rem top bottom',
-                end: 'bottom top',
-                scrub: true,
-            }
-        });
-        timeline.to(this.$refs.oval, {
-            height: '0px'
+        this.$watch(() => store.loading, (newVal) => {
+            this.loading = newVal;
+            this.animateOval();
         });
     },
 }
 </script>
 
 <template>
-    <div ref="oval" class="circle_container">
+    <div v-show="!loading" ref="oval" class="circle_container">
         <div class="circle_page_end"></div>
     </div>
 </template>

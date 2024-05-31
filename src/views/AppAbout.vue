@@ -22,7 +22,7 @@ export default {
 
             <div class="text no_select">
                 <p>
-                    Web Developer
+                    Hi, I'm Ricky a Web Developer
                     with a flair for<br> creating engaging
                     and interactive <br>web
                     experiences.
