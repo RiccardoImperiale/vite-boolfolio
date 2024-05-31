@@ -44,14 +44,19 @@ export default {
             </div>
         </div>
 
+        <!-- SELECTED PROJECTS  -->
         <ProjectsFeatured />
 
-        <div class="all_projects_link">
+        <!-- ALL PROJECTS LINK  -->
+
+        <router-link class="all_projects_link" to="/projects">
             <div class="link_container">
-                <router-link class="nav_link" to="/projects">see all projects</router-link>
-                <router-link class="nav_link" to="/projects">see all projects</router-link>
+                <span class="nav_link">see all projects</span>
+                <span class="nav_link">see all projects</span>
             </div>
-        </div>
+        </router-link>
+
+        <div class="dot"></div>
 
         <div class="color_gradient_reverse"></div>
 
@@ -90,8 +95,18 @@ export default {
     z-index: 2;
 }
 
+.dot {
+    background-color: greenyellow;
+    width: 5px;
+    height: 5px;
+    margin: 2rem auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
 .all_projects_link {
     display: flex;
+    text-decoration: none;
 
     .link_container {
         overflow: hidden;

@@ -10,10 +10,9 @@ export default {
     data() {
         return {
             base_api_url: 'http://127.0.0.1:8000',
-            // base_projects_url: '/api/projects',
             base_projects_url: '/api/featured',
             projects: [],
-            // loading: true
+            loading: true
         }
     },
     methods: {
@@ -26,17 +25,7 @@ export default {
                     this.loading = false
                 })
                 .catch(err => console.error(err))
-        },
-        // prevPage(url) {
-        //     this.callApi(url);
-        // },
-        // nextPage(url) {
-        //     this.callApi(url);
-        // },
-        // goTo(page) {
-        //     const url = this.base_api_url + this.base_projects_url + `?page=${page}`
-        //     this.callApi(url)
-        // }
+        }
     },
     mounted() {
         let url = this.base_api_url + this.base_projects_url;
@@ -51,28 +40,12 @@ export default {
             <ProjectCard v-for="project in projects" :key="project.id"
                 :imageSrc="base_api_url + '/storage/' + project.image" />
         </div>
-        <!-- <div class="loader" v-else>
-            Loading...
-        </div> -->
-        <!-- <div v-if="projects.last_page > 1" class="pagination_container">
-            <div class="pagination">
-                <button @click="prevPage(projects.prev_page_url)">
-                    <img class="arrow_left" width="7" src="/img/arrow.png" alt="arrow icon">
-                </button>
-                <button class="page_dot" v-for="page in projects.last_page" @click="goTo(page)">
-                    <div :class="{ 'dot_active': page == projects.current_page }"></div>
-                </button>
-                <button @click="nextPage(projects.next_page_url)">
-                    <img class="arrow_right" width="7" src="/img/arrow.png" alt="arrow icon">
-                </button>
-            </div>
-        </div> -->
     </div>
 </template>
 
 <style scoped>
 .projects_container {
-    height: 920px;
+    margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

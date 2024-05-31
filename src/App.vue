@@ -1,10 +1,12 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
+import CustomCursor from './components/CustomCursor.vue'
 
 export default {
     name: 'App',
     components: {
-        AppHeader
+        AppHeader,
+        CustomCursor
     }
 }
 </script>
@@ -14,6 +16,7 @@ export default {
     <main>
         <RouterView />
     </main>
+    <CustomCursor />
 </template>
 
 <style scoped></style>

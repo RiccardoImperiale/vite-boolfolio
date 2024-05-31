@@ -4,7 +4,6 @@ import SectionAbout from '../components/SectionAbout.vue'
 import SectionWorks from '../components/SectionWorks.vue'
 // import AnimationEnd from '../components/AnimationEnd.vue'
 import SectionContact from '../components/SectionContact.vue'
-import CustomCursor from '../components/CustomCursor.vue';
 
 export default {
     name: 'AppHome',
@@ -14,7 +13,6 @@ export default {
         SectionWorks,
         // AnimationEnd,
         SectionContact,
-        CustomCursor
     }
 }
 </script>
@@ -25,7 +23,6 @@ export default {
     <SectionWorks />
     <!-- <AnimationEnd /> -->
     <SectionContact />
-    <CustomCursor />
 </template>
 
 <style scoped></style>
