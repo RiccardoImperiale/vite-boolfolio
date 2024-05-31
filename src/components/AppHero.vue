@@ -23,7 +23,7 @@ export default {
         <div id="hero">
             <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
 
-            <!-- <img class="hero_img" src="/img/hero-profile.jpg" alt="fwef"> -->
+            <img class="hero_img" src="/img/hero-profile.jpg" alt="fwef">
             <div class="color_filter"></div>
 
             <TextSlider class="hero_text_slider"

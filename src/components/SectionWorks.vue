@@ -44,7 +44,8 @@ export default {
             </div>
         </div>
 
-        <AppProjects @mouseover="isCursor(true)" @mouseleave="isCursor(false)" />
+        <!-- <AppProjects @mouseover="isCursor(true)" @mouseleave="isCursor(false)" /> -->
+        <AppProjects />
 
         <div class="color_gradient_reverse"></div>
 

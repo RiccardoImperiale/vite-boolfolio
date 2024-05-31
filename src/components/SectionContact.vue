@@ -172,8 +172,6 @@ export default {
 
 }
 
-
-
 .icon3d {
     rotate: -10deg;
     left: -2rem;
