@@ -2,28 +2,32 @@
 import TextSlider from "./TextSlider.vue";
 import { store } from '../store.js'
 import InfoDot from "./InfoDot.vue";
+import { parallax } from "../assets/gsap/animations.js";
 
 export default {
     name: 'AppHero',
+    data() {
+        return {
+            store
+        }
+    },
     components: {
         TextSlider,
         InfoDot
     },
-    methods: {
-        isCursor(val) {
-            store.isCustomCursor = val
-        }
-    }
+    mounted() {
+        parallax(this.$refs.hero)
+    },
 }
 </script>
 
 <template>
-    <div @mouseover="isCursor(true)" @mouseleave="isCursor(false)">
+    <div @mouseover="store.isCustomCursor = true" @mouseleave="store.isCustomCursor = false">
 
         <div id="hero">
             <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
 
-            <img class="hero_img" src="/img/hero-profile.jpg" alt="fwef">
+            <img ref="hero" class="hero_img" src="/img/hero-profile.jpg" alt="fwef">
             <div class="color_filter"></div>
 
             <TextSlider class="hero_text_slider"

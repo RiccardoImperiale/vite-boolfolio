@@ -39,3 +39,15 @@ export const animate = (el) => {
         height: '0px'
     });
 }
+
+export const parallax = (el) => {
+    gsap.to(el, {
+        scrollTrigger: {
+            trigger: el,
+            start: '+100px top bottom',
+            end: 'bottom top',
+            scrub: true,
+        },
+        y: 200
+    });
+}
