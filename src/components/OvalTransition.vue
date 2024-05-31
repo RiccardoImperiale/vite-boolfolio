@@ -10,7 +10,7 @@ export default {
     name: 'OvalTransition',
     data() {
         return {
-            loading: store.loading
+            store
         }
     },
     methods: {
@@ -29,8 +29,7 @@ export default {
         }
     },
     mounted() {
-        this.$watch(() => store.loading, (newVal) => {
-            this.loading = newVal;
+        this.$watch(() => store.loading, () => {
             this.animateOval();
         });
     },
@@ -38,7 +37,7 @@ export default {
 </script>
 
 <template>
-    <div v-show="!loading" ref="oval" class="circle_container">
+    <div ref="oval" class="circle_container">
         <div class="circle_page_end"></div>
     </div>
 </template>

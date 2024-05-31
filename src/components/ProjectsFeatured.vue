@@ -13,7 +13,7 @@ export default {
             base_api_url: 'http://127.0.0.1:8000',
             base_projects_url: '/api/featured',
             projects: [],
-            loading: store.loading
+            store
         }
     },
     methods: {
@@ -23,7 +23,6 @@ export default {
                 .then(res => {
                     this.projects = res.data.projects
                     store.loading = false
-                    this.loading = store.loading
                 })
                 .catch(err => console.error(err))
         }
@@ -31,17 +30,13 @@ export default {
     mounted() {
         let url = this.base_api_url + this.base_projects_url;
         this.callApi(url);
-
-        this.$watch(() => store.loading, (newVal) => {
-            this.loading = newVal;
-        });
     }
 }
 </script>
 
 <template>
     <div class="container projects_container">
-        <div v-if="!loading" class="projects">
+        <div v-if="!store.loading" class="projects">
             <ProjectCard v-for="project in projects" :key="project.id"
                 :imageSrc="base_api_url + '/storage/' + project.image" />
         </div>
