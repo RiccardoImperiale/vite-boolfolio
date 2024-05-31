@@ -18,6 +18,7 @@ export default {
     },
     methods: {
         callApi(url) {
+            store.loading = true
             axios
                 .get(url)
                 .then(res => {
