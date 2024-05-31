@@ -1,18 +1,86 @@
 <script>
 
-import SectionAbout from '../components/SectionAbout.vue'
 
 export default {
     name: 'AppAbout',
     components: {
-        SectionAbout,
     }
 }
 </script>
 
 <template>
-    more in depth about
-    <SectionAbout />
+    <section id="about">
+
+
+        <div class="container">
+            <div class="section_title">
+                <div class="dot"></div>
+                <div>about</div>
+                <!-- <img height="35" src="/img/about.png" alt="about title"> -->
+            </div>
+
+
+            <div class="text no_select">
+                <p>
+                    Web Developer
+                    with a flair for<br> creating engaging
+                    and interactive <br>web
+                    experiences.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- <button class="btn">
+            <div class="btn_in">
+                <span class="name">Download</span>
+                <img width="25" src="/img/logo-gray100.png" alt="">
+                <span class="location">Full CV</span>
+            </div>
+        </button> -->
+    </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+#about {
+    padding: 10rem 0;
+}
+
+/* .left {
+    background-color: aqua;
+} */
+
+.section_title {
+    text-align: left;
+    color: var(--pf-gray-600);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 500;
+    z-index: 2;
+
+    .dot {
+        background-color: greenyellow;
+        width: 5px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        /* margin: auto; */
+        margin-bottom: 1rem;
+    }
+}
+
+.text {
+    text-align: left;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    display: flex;
+    justify-content: start;
+
+    & p {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--pf-gray-100);
+        line-height: 3rem;
+        text-transform: capitalize;
+    }
+}
+</style>

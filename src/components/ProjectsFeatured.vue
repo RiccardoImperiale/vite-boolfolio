@@ -36,15 +36,19 @@ export default {
 
 <template>
     <div class="container projects_container">
-        <div class="projects">
+        <div v-if="!loading" class="projects">
             <ProjectCard v-for="project in projects" :key="project.id"
                 :imageSrc="base_api_url + '/storage/' + project.image" />
+        </div>
+        <div class="loader" v-else>
+            Loading...
         </div>
     </div>
 </template>
 
 <style scoped>
 .projects_container {
+    /* height: 825px; */
     margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
@@ -150,4 +154,20 @@ export default {
 
     }
 }
+
+/* @media screen and (min-width: 720px) {
+    .projects_container {
+        height: 1476px;
+
+
+    }
+} */
+
+/* @media screen and (min-width: 1280px) {
+    .projects_container {
+        height: 1476px;
+        height: 825px;
+
+    }
+} */
 </style>
