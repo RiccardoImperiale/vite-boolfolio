@@ -3,7 +3,7 @@ import { store } from '../store.js'
 import BouncyLine from "./BouncyLine.vue";
 import OvalTransition from "./OvalTransition.vue";
 import TextSlider from "./TextSlider.vue";
-import AppProjects from './AppProjects.vue';
+import ProjectsFeatured from './ProjectsFeatured.vue';
 
 export default {
     name: 'SectionWorks',
@@ -11,7 +11,7 @@ export default {
         BouncyLine,
         OvalTransition,
         TextSlider,
-        AppProjects
+        ProjectsFeatured
     },
     methods: {
         isOver(val) {
@@ -44,8 +44,9 @@ export default {
             </div>
         </div>
 
-        <!-- <AppProjects @mouseover="isCursor(true)" @mouseleave="isCursor(false)" /> -->
-        <AppProjects />
+        <ProjectsFeatured />
+
+        <button class="btn btn_all">see all projects</button>
 
         <div class="color_gradient_reverse"></div>
 
@@ -123,6 +124,10 @@ export default {
     &:hover .gh_logo {
         top: -2px;
     }
+}
+
+.btn_all {
+    background-color: rebeccapurple;
 }
 
 

@@ -31,7 +31,7 @@ export default {
 
             <img class="blur_filter" src="/img/frame.png" alt="">
 
-            <InfoDot class="info_dot" message="Hi, I'm Ricky... 👋" />
+            <!-- <InfoDot class="info_dot" message="Hi, I'm Ricky... 👋" />  -->
         </div>
     </div>
 
