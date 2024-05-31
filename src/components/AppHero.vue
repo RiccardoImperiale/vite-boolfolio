@@ -16,7 +16,7 @@ export default {
         InfoDot
     },
     mounted() {
-        parallax(this.$refs.hero)
+        parallax(this.$refs.hero, '+100px top bottom', 200)
     },
 }
 </script>

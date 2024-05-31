@@ -89,7 +89,7 @@ export default {
 <style scoped>
 #works {
     padding-top: 5rem;
-    margin-top: -5rem;
+    margin-top: -10rem;
     padding-bottom: 10rem;
     background-color: var(--pf-gray-900);
     z-index: 2;

@@ -28,7 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
 //     })
 // };
 
-export const animate = (el) => {
+export const animateOval = (el) => {
     gsap.to(el, {
         scrollTrigger: {
             trigger: el,
@@ -40,14 +40,28 @@ export const animate = (el) => {
     });
 }
 
-export const parallax = (el) => {
+export const parallax = (el, start, dist, scrub = true) => {
     gsap.to(el, {
         scrollTrigger: {
             trigger: el,
-            start: '+100px top bottom',
+            start: start,
             end: 'bottom top',
-            scrub: true,
+            scrub: scrub,
+            ease: 'power1.inOut'
         },
-        y: 200
+        y: dist,
     });
+}
+
+export const textSlideLoop = (el, updateDirection) => {
+    gsap.to(el, {
+        scrollTrigger: {
+            trigger: el,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.25,
+            onUpdate: updateDirection
+        },
+        x: "-=400px",
+    })
 }

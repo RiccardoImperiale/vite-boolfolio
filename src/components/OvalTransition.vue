@@ -1,6 +1,6 @@
 <script>
 import { store } from '../store.js';
-import { animate } from '../assets/gsap/animations.js';
+import { animateOval } from '../assets/gsap/animations.js';
 
 export default {
     name: 'OvalTransition',
@@ -11,7 +11,7 @@ export default {
     },
     mounted() {
         this.$watch(() => store.loading, () => {
-            animate(this.$refs.oval);
+            animateOval(this.$refs.oval);
         });
     },
 }
