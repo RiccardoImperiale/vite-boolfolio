@@ -1,10 +1,6 @@
 <script>
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 import { store } from '../store.js';
+import { animate } from '../assets/gsap/animations.js';
 
 export default {
     name: 'OvalTransition',
@@ -13,24 +9,9 @@ export default {
             store
         }
     },
-    methods: {
-        animateOval() {
-            const timeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: this.$refs.oval,
-                    start: '-800rem top bottom',
-                    end: 'bottom top',
-                    scrub: true,
-                }
-            });
-            timeline.to(this.$refs.oval, {
-                height: '0px'
-            });
-        }
-    },
     mounted() {
         this.$watch(() => store.loading, () => {
-            this.animateOval();
+            animate(this.$refs.oval);
         });
     },
 }
