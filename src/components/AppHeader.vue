@@ -27,8 +27,8 @@ export default {
                     <router-link class="nav_link" to="/about">ABOUT</router-link>
                 </div>
                 <div class="link_container">
-                    <router-link class="nav_link" to="/works">WORKS</router-link>
-                    <router-link class="nav_link" to="/works">WORKS</router-link>
+                    <router-link class="nav_link" to="/projects">ALL PROJECTS</router-link>
+                    <router-link class="nav_link" to="/projects">ALL PROJECTS</router-link>
                 </div>
                 <div class="link_container">
                     <router-link class="nav_link" to="/contact">CONTACT</router-link>
@@ -63,7 +63,7 @@ header {
 
         .page_links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
 
             .link_container {
                 overflow: hidden;

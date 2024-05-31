@@ -1,5 +1,4 @@
 <script>
-// import AppHeader from '../components/AppHeader.vue'
 import AppHero from '../components/AppHero.vue'
 import SectionAbout from '../components/SectionAbout.vue'
 import SectionWorks from '../components/SectionWorks.vue'
@@ -10,7 +9,6 @@ import CustomCursor from '../components/CustomCursor.vue';
 export default {
     name: 'AppHome',
     components: {
-        // AppHeader,
         AppHero,
         SectionAbout,
         SectionWorks,
@@ -22,7 +20,6 @@ export default {
 </script>
 
 <template>
-    <!-- <AppHeader /> -->
     <AppHero />
     <SectionAbout />
     <SectionWorks />

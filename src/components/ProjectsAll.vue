@@ -71,6 +71,7 @@ export default {
 
 <style scoped>
 .projects_container {
+    padding: 10rem 0;
     height: 920px;
     display: flex;
     flex-direction: column;

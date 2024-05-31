@@ -46,7 +46,12 @@ export default {
 
         <ProjectsFeatured />
 
-        <button class="btn btn_all">see all projects</button>
+        <div class="all_projects_link">
+            <div class="link_container">
+                <router-link class="nav_link" to="/projects">see all projects</router-link>
+                <router-link class="nav_link" to="/projects">see all projects</router-link>
+            </div>
+        </div>
 
         <div class="color_gradient_reverse"></div>
 
@@ -78,11 +83,49 @@ export default {
 
 <style scoped>
 #works {
-    padding-top: 6rem;
-    margin-top: -14rem;
-    padding-bottom: 6rem;
+    padding-top: 5rem;
+    margin-top: -5rem;
+    padding-bottom: 10rem;
     background-color: var(--pf-gray-900);
     z-index: 2;
+}
+
+.all_projects_link {
+    display: flex;
+
+    .link_container {
+        overflow: hidden;
+        height: 55px;
+        width: 220px;
+        margin: auto;
+        border: 1px solid var(--pf-gray-800);
+        border-radius: 55px;
+        background-color: var(--pf-gray-800);
+        transition: .3s ease;
+
+        &:hover {
+            background-color: var(--pf-gray-900);
+            border: 1px solid var(--pf-gray-800);
+        }
+
+        &:hover .nav_link {
+            transform: translateY(-39px);
+        }
+
+        .nav_link {
+            margin-top: 13px;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            color: var(--pf-gray-300);
+            font-size: 1.25rem;
+            transition: .3s ease;
+        }
+
+        .nav_link:nth-of-type(2) {
+            padding-top: 2px;
+        }
+    }
 }
 
 .text_slider {
