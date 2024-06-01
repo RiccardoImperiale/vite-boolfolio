@@ -75,21 +75,20 @@ export const animateText = (links) => {
 }
 
 
-export const animateIcons = (links) => {
-    ScrollTrigger.create({
-        trigger: links,
-        start: 'top bottom-=400px',
-        end: 'top bottom-=400px',
-        scrub: 0.2,
-        onEnter: () => {
-            gsap.to(links, { x: 0, autoAlpha: 1, duration: 0.45, scale: 1, stagger: 0.1, ease: "power1.out" });
-
-        },
-        onLeaveBack: () => {
-            gsap.to(links, { x: -200, autoAlpha: 0, duration: 0.25, scale: 0, stagger: 0.1, ease: "power1.in" });
-        },
-    });
-}
+// export const animateIcons = (links) => {
+//     ScrollTrigger.create({
+//         trigger: links,
+//         start: 'top bottom-=400px',
+//         end: 'top bottom-=400px',
+//         scrub: 0.2,
+//         onEnter: () => {
+//             gsap.to(links, { x: 0, autoAlpha: 1, duration: 0.45, scale: 1, stagger: 0.1, ease: "power1.out" });
+//         },
+//         onLeaveBack: () => {
+//             gsap.to(links, { x: -200, autoAlpha: 0, duration: 0.25, scale: 0, stagger: 0.1, ease: "power1.in" });
+//         },
+//     });
+// }
 
 
 export const animateButton = (el) => {

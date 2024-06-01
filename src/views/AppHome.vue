@@ -2,7 +2,7 @@
 import AppHero from '../components/AppHero.vue'
 import SectionAbout from '../components/SectionAbout.vue'
 import SectionWorks from '../components/SectionWorks.vue'
-// import AnimationEnd from '../components/AnimationEnd.vue'
+import AnimationEnd from '../components/AnimationEnd.vue'
 import SectionContact from '../components/SectionContact.vue'
 
 export default {
@@ -11,7 +11,7 @@ export default {
         AppHero,
         SectionAbout,
         SectionWorks,
-        // AnimationEnd,
+        AnimationEnd,
         SectionContact,
     }
 }
@@ -20,8 +20,8 @@ export default {
 <template>
     <AppHero />
     <SectionAbout />
+    <AnimationEnd />
     <SectionWorks />
-    <!-- <AnimationEnd /> -->
     <SectionContact />
 </template>
 

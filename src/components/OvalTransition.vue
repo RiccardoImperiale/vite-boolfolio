@@ -37,7 +37,7 @@ export default {
         height: 1000%;
         width: 120%;
         left: -10%;
-        background-color: var(--pf-gray-800);
+        background-color: var(--pf-gray-100);
         border-radius: 0 0 50% 50%;
     }
 }

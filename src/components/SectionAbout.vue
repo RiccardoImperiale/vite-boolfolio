@@ -3,7 +3,7 @@ import BouncyLine from "./BouncyLine.vue";
 import { store } from '../store.js'
 import LogosSlider from "./LogosSlider.vue";
 
-import { animateButton, animateIcons, animateText } from "../assets/gsap/animations.js";
+import { animateButton, animateText } from "../assets/gsap/animations.js";
 
 export default {
     name: 'SectionAbout',
@@ -23,7 +23,7 @@ export default {
         const staggerTexts = document.querySelectorAll('.staggerText');
         const staggerIcons = document.querySelectorAll('.staggerIcon');
 
-        animateIcons(staggerIcons);
+        // animateIcons(staggerIcons);
         animateText(staggerTexts);
         animateButton(this.$refs.button);
     },
@@ -72,8 +72,8 @@ export default {
         </div>
 
         <!-- big icon -->
-        <img class="staggerIcon icon3d" width="270" src="/img/3d-icon-1.png" alt="spaceship icon">
-        <img class="staggerIcon violet_blur" width="600" src="/img/violet-blur.png" alt="violet blur light">
+        <!-- <img class="staggerIcon icon3d" width="270" src="/img/3d-icon-1.png" alt="spaceship icon">
+        <img class="staggerIcon violet_blur" width="600" src="/img/violet-blur.png" alt="violet blur light"> -->
     </section>
 </template>
 

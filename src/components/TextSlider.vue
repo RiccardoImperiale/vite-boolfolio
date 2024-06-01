@@ -10,6 +10,7 @@ export default {
     name: 'TextSlider',
     props: {
         text: String,
+        color: String
     },
     data() {
         return {
@@ -45,8 +46,8 @@ export default {
 <template>
     <div ref="textSlider" class="slider_container no_select">
         <div ref="slider" class="slider">
-            <p ref="firstText"> {{ text }} </p>
-            <p ref="secondText"> {{ text }} </p>
+            <p :style="{ color: color }" ref="firstText"> {{ text }} </p>
+            <p :style="{ color: color }" ref="secondText"> {{ text }} </p>
         </div>
     </div>
 </template>

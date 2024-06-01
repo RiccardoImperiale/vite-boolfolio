@@ -26,7 +26,7 @@ export default {
 
 <template>
     <section id="works">
-        <div class="color_gradient"></div>
+        <!-- <div class="color_gradient"></div> -->
 
         <div class="container">
             <div class="section_title">
@@ -58,29 +58,27 @@ export default {
 
         <div class="dot"></div>
 
-        <div class="color_gradient_reverse"></div>
-
-        <div class="text_slider">
-            <TextSlider @mouseover="isOver(true)" @mouseleave="isOver(false)"
+        <!-- <div class="color_gradient_reverse"></div> -->
+        <div class="white_wrapper">
+            <!-- text slide -->
+            <TextSlider class="textSlider" color="var(--pf-gray-300)" @mouseover="isOver(true)"
+                @mouseleave="isOver(false)"
                 text="Thanks For Watching / Thanks For Watching / Thanks For Watching / Thanks For Watching /" />
+
+            <!-- btn -->
+            <button class="btn" @mouseover="isCursor(true)" @mouseleave="isCursor(false)">
+                <a href="https://github.com/RiccardoImperiale" target="_blank">
+                    <div class="btn_in">
+                        <img width="25" src="/img/logo-gray100.png" alt="site logo">
+                    </div>
+                    <img class="gh_logo" width="76" src="/img/logo-github-wt.png" alt="git hub logo">
+                </a>
+            </button>
         </div>
-
-        <!-- btn -->
-        <button class="btn" @mouseover="isCursor(true)" @mouseleave="isCursor(false)">
-            <a href="https://github.com/RiccardoImperiale" target="_blank">
-                <div class="btn_in">
-                    <img width="25" src="/img/logo-gray100.png" alt="site logo">
-                </div>
-                <img class="gh_logo" width="76" src="/img/logo-github-wt.png" alt="git hub logo">
-            </a>
-        </button>
-
         <!-- big icon -->
-        <img class="icon3d" width="370" src="/img/3d-icon-2.png" alt="spaceship icon">
+        <!-- <img class="icon3d" width="370" src="/img/3d-icon-2.png" alt="spaceship icon">
         <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
-        <img class="violet_blur2" width="900" src="/img/violet-blur.png" alt="">
-        <!-- <img class="violet_blur3" width="900" src="/img/blue-blur.png" alt=""> -->
-        <!-- <img class="violet_blur3" width="900" src="/img/violet-blur.png" alt=""> -->
+        <img class="violet_blur2" width="900" src="/img/violet-blur.png" alt=""> -->
 
     </section>
     <OvalTransition />
@@ -89,10 +87,10 @@ export default {
 <style scoped>
 #works {
     padding-top: 5rem;
-    margin-top: -10rem;
-    padding-bottom: 10rem;
-    background-color: var(--pf-gray-900);
+    margin-top: -50rem;
     z-index: 2;
+    /* background-color: var(--pf-gray-100); */
+
 }
 
 .dot {
@@ -103,6 +101,12 @@ export default {
     aspect-ratio: 1;
     border-radius: 50%;
 }
+
+
+.text p {
+    color: var(--pf-gray-900);
+}
+
 
 .all_projects_link {
     display: flex;
@@ -143,54 +147,60 @@ export default {
     }
 }
 
-.text_slider {
-    margin-top: 20rem;
+.white_wrapper {
+    background-color: var(--pf-gray-100);
     position: relative;
-    mix-blend-mode: color-dodge;
-}
+    height: 400px;
 
-.btn {
-    transition: .25s ease;
-    background-color: transparent;
-
-    & a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .textSlider {
+        background-color: aqua;
+        top: 3rem;
+        height: 0;
     }
 
-    .btn_in {
-        transform: translateX(0);
-        background-color: var(--pf-accent);
-        width: 75px;
-        height: 75px;
-        border-radius: 50%;
-        z-index: 1;
-    }
-
-    .gh_logo {
+    .btn {
         position: absolute;
-        top: 80px;
-        transition: .45s ease;
+        top: 15rem;
+        left: 0;
+        right: 0;
+        transition: .25s ease;
+        background-color: transparent;
+
+        & a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn_in {
+            transform: translateX(0);
+            background-color: var(--pf-accent);
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .gh_logo {
+            position: absolute;
+            top: 80px;
+            transition: .45s ease;
+            filter: invert();
+        }
+
+        &:hover .btn_in {
+            transform: translateY(100%);
+            /* scale: 2; */
+        }
+
+        &:hover .gh_logo {
+            top: -2px;
+        }
     }
 
-    &:hover .btn_in {
-        transform: translateY(100%);
-        /* scale: 2; */
-    }
-
-    &:hover .gh_logo {
-        top: -2px;
-    }
 }
 
-.btn_all {
-    background-color: rebeccapurple;
-}
-
-
-/* GRADIENT -----------------------------> */
-.color_gradient,
+/* .color_gradient,
 .color_gradient_reverse {
     position: absolute;
     width: 100%;
@@ -206,13 +216,13 @@ export default {
     z-index: -1;
     height: 650px;
     bottom: 0;
-    background-image: linear-gradient(var(--pf-gray-900), var(--pf-gray-800));
-}
+    background-color: var(--pf-gray-100);
+} */
 
 
 /* BIG ICONS -----------------------------> */
 
-.icon3d {
+/* .icon3d {
     right: -6rem;
     top: -8rem;
     filter: drop-shadow(70px 20px 10px rgba(0, 0, 0, 0.198));
@@ -226,7 +236,7 @@ export default {
 .violet_blur2 {
     left: -30rem;
     top: -10rem;
-}
+} */
 
 /* .violet_blur3 {
     right: -40rem;

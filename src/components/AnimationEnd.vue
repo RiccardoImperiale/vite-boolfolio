@@ -36,7 +36,6 @@ export default {
             scrollTrigger: {
                 scrub: 1.5,
                 pin: canvas,
-                // end: "500%",
                 end: "150%",
                 // markers: true
             },
@@ -52,7 +51,6 @@ export default {
             context.clearRect(0, 0, canvas.width, canvas.height);
             context.drawImage(images[frame.frame], 0, 0);
         }
-
     },
 }
 </script>
