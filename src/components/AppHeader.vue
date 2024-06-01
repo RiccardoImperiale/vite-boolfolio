@@ -19,28 +19,65 @@ export default {
     },
     mounted() {
         const header = this.$refs.header;
-        const nav = this.$refs.nav;
-        const linearGradient = 'linear-gradient(90deg, rgba(189, 189, 189, 0) 0%, rgba(189, 189, 189, 0.1) 50%, rgba(189, 189, 189, 0) 100%)'
+        const links = document.querySelectorAll('.link_container')
+        function animateElements() {
+            gsap.to(header, { y: -100, autoAlpha: 0, duration: 1 });
+            gsap.to(links, { y: -100, autoAlpha: 0, duration: 1, stagger: 0.1 });
+        }
 
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.scrollY;
-            if (currentScroll > 0) {
-                gsap.to(header, { background: linearGradient, backdropFilter: "blur(10px)", duration: 1 })
-                gsap.to(nav, { borderBottom: '1px solid rgba(255, 255, 255, 0.252)', duration: 1 })
-            } else {
-                gsap.to(header, { background: 'transparent', backdropFilter: "blur(0px)", duration: 1 })
-                gsap.to(nav, { borderBottom: 'none', duration: 1 })
-            }
+        function resetElements() {
+            gsap.to(header, { y: 0, autoAlpha: 1, duration: 0.5 });
+            gsap.to(links, { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.1 });
+        }
 
-            if (currentScroll > 560) {
-                if (currentScroll > this.scrollPosition) {
-                    gsap.to(header, { y: -100, duration: 0.5 });
-                } else {
-                    gsap.to(header, { y: 0, duration: 0.5 });
-                }
-            }
-            this.scrollPosition = currentScroll;
+        ScrollTrigger.create({
+            start: "200px top top",
+            onEnter: animateElements,
+            onLeaveBack: resetElements,
         });
+
+
+        // links.forEach(() => {
+        //     ScrollTrigger.create({
+        //         start: "top top",
+        //         onEnter: () => gsap.to(links, { y: -100, autoAlpha: 0, duration: 1, stagger: 0.1, }),
+        //         onLeaveBack: () => gsap.to(links, { y: 0, autoAlpha: 1, duration: 0.15, stagger: 0.1, }),
+        //     });
+        // })
+
+        // ScrollTrigger.create({
+        //     start: "top+=100 top",
+        //     onEnter: () => gsap.to(header, { y: -100, duration: 0.5 }),
+        //     onLeaveBack: () => gsap.to(header, { y: 0, duration: 0.5 }),
+        // });
+        // const nav = this.$refs.nav;
+        // const linearGradient = 'linear-gradient(90deg, rgba(189, 189, 189, 0) 0%, rgba(189, 189, 189, 0.1) 50%, rgba(189, 189, 189, 0) 100%)'
+
+        // window.addEventListener("scroll", () => {
+        //     const currentScroll = window.scrollY;
+        //     if (currentScroll > 0) {
+        //         gsap.to(header, { background: linearGradient, backdropFilter: "blur(10px)", duration: 1 })
+        //         gsap.to(nav, { borderBottom: '1px solid rgba(255, 255, 255, 0.252)', duration: 1 })
+        //     } else {
+        //         gsap.to(header, { background: 'transparent', backdropFilter: "blur(0px)", duration: 1 })
+        //         gsap.to(nav, { borderBottom: 'none', duration: 1 })
+        //     }
+
+        //     if (currentScroll > 560) {
+        //         if (currentScroll > this.scrollPosition) {
+        //             gsap.to(header, { y: -100, duration: 0.5 });
+        //         } else {
+        //             gsap.to(header, { y: 0, duration: 0.5 });
+        //         }
+        //     }
+        //     this.scrollPosition = currentScroll;
+        // });
+
+        // gsap.set(header, {
+        //     autoAlpha: 1,
+        //     y: -100,
+        // })
+
     },
 }
 </script>
@@ -86,10 +123,6 @@ header {
     top: 0;
     width: 100%;
     z-index: 10;
-    /* background: transparent;
-    backdrop-filter: blur(0); */
-    /* transition: 0.5s ease; */
-    /* transition: transform 0.5s, background 0.5s, backdrop-filter 0.5s; */
 
     & nav {
         max-width: 1920px;
