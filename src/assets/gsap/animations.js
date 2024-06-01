@@ -65,3 +65,17 @@ export const textSlideLoop = (el, updateDirection) => {
         x: "-=400px",
     })
 }
+
+export const animateHeader = (header, links) => {
+    ScrollTrigger.create({
+        start: "120px top top",
+        onEnter: () => {
+            gsap.to(header, { y: -100, autoAlpha: 0, duration: 1 });
+            gsap.to(links, { y: -100, autoAlpha: 0, duration: 1, stagger: 0.1 });
+        },
+        onLeaveBack: () => {
+            gsap.to(header, { y: 0, autoAlpha: 1, duration: 0.5 });
+            gsap.to(links, { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.1 });
+        },
+    });
+}
