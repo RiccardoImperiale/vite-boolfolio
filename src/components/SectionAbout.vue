@@ -2,14 +2,15 @@
 import BouncyLine from "./BouncyLine.vue";
 import { store } from '../store.js'
 import LogosSlider from "./LogosSlider.vue";
-
 import { animateButton, animateText } from "../assets/gsap/animations.js";
+import OvalTransition from "./OvalTransition.vue";
 
 export default {
     name: 'SectionAbout',
     components: {
         BouncyLine,
-        LogosSlider
+        LogosSlider,
+        OvalTransition
     },
     methods: {
         isOver(val) {
@@ -70,6 +71,7 @@ export default {
         <div class="container">
             <BouncyLine lineColor="var(--pf-gray-300)" />
         </div>
+        <!-- <OvalTransition /> -->
 
         <!-- big icon -->
         <!-- <img class="staggerIcon icon3d" width="270" src="/img/3d-icon-1.png" alt="spaceship icon">
@@ -80,7 +82,7 @@ export default {
 <style scoped>
 #about {
     padding-top: 6rem;
-    padding-bottom: 20rem;
+    padding-bottom: 10rem;
     z-index: 3;
 }
 

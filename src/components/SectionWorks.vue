@@ -48,15 +48,15 @@ export default {
         <ProjectsFeatured />
 
         <!-- ALL PROJECTS LINK  -->
-
         <router-link class="all_projects_link" to="/projects">
             <div class="link_container">
                 <span class="nav_link">see all projects</span>
                 <span class="nav_link">see all projects</span>
             </div>
+            <div class="dot_wrapper">
+                <div class="dot"></div>
+            </div>
         </router-link>
-
-        <div class="dot"></div>
 
         <!-- <div class="color_gradient_reverse"></div> -->
         <div class="white_wrapper">
@@ -71,7 +71,7 @@ export default {
                     <div class="btn_in">
                         <img width="25" src="/img/logo-gray100.png" alt="site logo">
                     </div>
-                    <img class="gh_logo" width="76" src="/img/logo-github-wt.png" alt="git hub logo">
+                    <img class="gh_logo" width="76" src="/img/logo-github-gray.png" alt="git hub logo">
                 </a>
             </button>
         </div>
@@ -87,9 +87,8 @@ export default {
 <style scoped>
 #works {
     padding-top: 5rem;
-    margin-top: -50rem;
+    margin-top: -40rem;
     z-index: 2;
-    /* background-color: var(--pf-gray-100); */
 
 }
 
@@ -102,7 +101,6 @@ export default {
     border-radius: 50%;
 }
 
-
 .text p {
     color: var(--pf-gray-900);
 }
@@ -111,24 +109,27 @@ export default {
 .all_projects_link {
     display: flex;
     text-decoration: none;
+    flex-direction: column;
 
     .link_container {
         overflow: hidden;
         height: 55px;
         width: 220px;
         margin: auto;
-        border: 1px solid var(--pf-gray-800);
+        border: 1px dashed var(--pf-gray-800);
         border-radius: 55px;
         background-color: var(--pf-gray-800);
-        transition: .3s ease;
+        transition: .45s ease;
 
         &:hover {
-            background-color: var(--pf-gray-900);
-            border: 1px solid var(--pf-gray-800);
+            background-color: var(--pf-gray-200);
+            background-color: var(--pf-gray-200);
+            border: 1px dashed var(--pf-gray-700);
         }
 
         &:hover .nav_link {
             transform: translateY(-39px);
+            color: var(--pf-gray-800);
         }
 
         .nav_link {
@@ -147,6 +148,13 @@ export default {
     }
 }
 
+.dot_wrapper {
+    background-color: var(--pf-gray-100);
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+}
+
 .white_wrapper {
     background-color: var(--pf-gray-100);
     position: relative;
@@ -160,7 +168,7 @@ export default {
 
     .btn {
         position: absolute;
-        top: 15rem;
+        top: 20rem;
         left: 0;
         right: 0;
         transition: .25s ease;
@@ -185,7 +193,6 @@ export default {
             position: absolute;
             top: 80px;
             transition: .45s ease;
-            filter: invert();
         }
 
         &:hover .btn_in {

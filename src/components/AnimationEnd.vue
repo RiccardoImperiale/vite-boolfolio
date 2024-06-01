@@ -67,6 +67,6 @@ export default {
     height: 100vh;
     object-fit: cover;
     /* z-index: 1; */
-    margin-top: -80vh;
+    margin-top: -45vh;
 }
 </style>

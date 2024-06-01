@@ -24,12 +24,11 @@ export default {
 <template>
     <div @mouseover="store.isCustomCursor = true" @mouseleave="store.isCustomCursor = false">
         <div id="hero">
-            <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
-            <img ref="hero" class="hero_img" src="/img/hero-profile.jpg" alt="fwef">
+            <img ref="hero" class="hero_img" src="/img/hero-profile.jpg" alt="profile image">
             <div class="color_filter"></div>
             <TextSlider class="hero_text_slider"
                 text="Riccardo Imperiale / Full Stack Web Developer / Riccardo Imperiale / Full Stack Web Developer /" />
-            <img class="blur_filter" src="/img/frame.png" alt="">
+            <img class="blur_filter" src="/img/frame.png" alt="blur gradient filter">
             <!-- <InfoDot class="info_dot" message="Hi, I'm Ricky... 👋" />  -->
         </div>
     </div>

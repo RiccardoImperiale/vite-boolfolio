@@ -64,6 +64,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
+    /* backdrop-filter: blur(10px); */
     background-color: var(--pf-cursor);
     border-radius: 50%;
     mix-blend-mode: difference;
