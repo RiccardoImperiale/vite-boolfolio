@@ -3,6 +3,7 @@ import BouncyLine from "./BouncyLine.vue";
 import { store } from '../store.js'
 import LogosSlider from "./LogosSlider.vue";
 
+import { animateButton, animateIcons, animateText } from "../assets/gsap/animations.js";
 
 export default {
     name: 'SectionAbout',
@@ -17,20 +18,28 @@ export default {
         isCursor(val) {
             store.isCustomCursor = val
         }
-    }
+    },
+    mounted() {
+        const staggerTexts = document.querySelectorAll('.staggerText');
+        const staggerIcons = document.querySelectorAll('.staggerIcon');
+
+        animateIcons(staggerIcons);
+        animateText(staggerTexts);
+        animateButton(this.$refs.button);
+    },
 }
 </script>
 
 <template>
-    <section id="about">
-        <div class="container">
+    <section ref="aboutSection" id="about">
+        <div class="container staggerText">
             <div class="section_title">
                 <div class="dot"></div>
                 <div>about</div>
                 <!-- <img height="35" src="/img/about.png" alt="about title"> -->
             </div>
         </div>
-        <div ref="container" class="container">
+        <div class="container staggerText">
             <div class="text no_select">
                 <p @mouseover="isOver(true)" @mouseleave="isOver(false)">
                     Web Developer
@@ -41,13 +50,15 @@ export default {
             </div>
         </div>
 
-        <button class="btn">
-            <div class="btn_in">
-                <span class="name">Download</span>
-                <img width="25" src="/img/logo-gray100.png" alt="">
-                <span class="location">Full CV</span>
-            </div>
-        </button>
+        <div ref="button" class="btn_wrapper">
+            <button class="btn">
+                <div class="btn_in">
+                    <span class="name">Download</span>
+                    <img width="25" src="/img/logo-gray100.png" alt="">
+                    <span class="location">Full CV</span>
+                </div>
+            </button>
+        </div>
 
         <!-- logos -->
         <div class="container">
@@ -61,8 +72,8 @@ export default {
         </div>
 
         <!-- big icon -->
-        <img class="icon3d" width="270" src="/img/3d-icon-1.png" alt="spaceship icon">
-        <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
+        <img class="staggerIcon icon3d" width="270" src="/img/3d-icon-1.png" alt="spaceship icon">
+        <img class="staggerIcon violet_blur" width="600" src="/img/violet-blur.png" alt="violet blur light">
     </section>
 </template>
 
@@ -73,6 +84,18 @@ export default {
     z-index: 3;
 }
 
+.btn_wrapper,
+.staggerText {
+    transform: translateY(200px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.staggerIcon {
+    transform: translateX(-200px);
+    opacity: 0;
+    visibility: hidden;
+}
 
 .btn {
     margin-bottom: 9rem;
