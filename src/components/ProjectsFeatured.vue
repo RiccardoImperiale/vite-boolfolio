@@ -67,7 +67,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--pf-gray-100);
+    color: var(--pf-gray-800);
 }
 
 .pagination_container {

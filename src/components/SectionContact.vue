@@ -20,7 +20,7 @@ export default {
         <div class="container">
             <div class="section_title">
                 <div class="dot"></div>
-                <div>contact</div>
+                <!-- <div>contact</div> -->
             </div>
             <!-- <div class="avatar">
                 <img src="/img/avatar2.png" alt="avatar image">
@@ -63,8 +63,8 @@ export default {
 
         </div>
         <!-- big icon -->
-        <img class="icon3d" width="300" src="/img/3d-icon-3.png" alt="spaceship icon">
-        <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
+        <!-- <img class="icon3d" width="300" src="/img/3d-icon-3.png" alt="spaceship icon">
+        <img class="violet_blur" width="600" src="/img/violet-blur.png" alt=""> -->
         <!-- <img class="violet_blur2" width="1600" src="/img/blue-blur.png" alt=""> -->
         <!-- <div class="bg"></div> -->
     </section>
@@ -79,7 +79,7 @@ export default {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: var(--pf-gray-900);
+    background-color: var(--pf-gray-800);
     overflow: hidden;
 
     .line {
@@ -110,17 +110,19 @@ export default {
         background-color: transparent;
         border: none;
         text-align: center;
-        font-size: 1.5rem;
-        color: var(--pf-gray-300);
+        font-size: 1.6rem;
+        color: var(--pf-gray-100);
         font-weight: 500;
         caret-color: var(--pf-accent-b);
+        transform: translateY(-8px);
 
         &:focus {
             outline: none;
         }
 
         &::placeholder {
-            color: var(--pf-gray-700)
+            color: var(--pf-gray-300);
+            font-size: 1.2rem;
         }
     }
 }
@@ -138,7 +140,7 @@ export default {
         width: calc(100% / 3);
         border-radius: 7.5px;
         height: 100%;
-        background-color: var(--pf-gray-700);
+        background-color: var(--pf-gray-300);
     }
 
     .step_error {
@@ -172,7 +174,7 @@ export default {
 
 }
 
-.icon3d {
+/* .icon3d {
     rotate: -10deg;
     left: -2rem;
     bottom: 0rem;
@@ -187,5 +189,5 @@ export default {
 .violet_blur2 {
     right: -40rem;
     top: 25rem;
-}
+} */
 </style>

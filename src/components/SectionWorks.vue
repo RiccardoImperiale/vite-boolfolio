@@ -81,7 +81,7 @@ export default {
         <img class="violet_blur2" width="900" src="/img/violet-blur.png" alt=""> -->
 
     </section>
-    <OvalTransition />
+    <!-- <OvalTransition /> -->
 </template>
 
 <style scoped>
@@ -89,11 +89,11 @@ export default {
     padding-top: 5rem;
     margin-top: -40rem;
     z-index: 2;
-
+    background-color: rebeccapurple;
 }
 
 .dot {
-    background-color: greenyellow;
+    background-color: var(--pf-accent-b);
     width: 5px;
     height: 5px;
     margin: 2rem auto;
@@ -158,7 +158,8 @@ export default {
 .white_wrapper {
     background-color: var(--pf-gray-100);
     position: relative;
-    height: 400px;
+    height: 500px;
+    background-color: rebeccapurple;
 
     .textSlider {
         background-color: aqua;
