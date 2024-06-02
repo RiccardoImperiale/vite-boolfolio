@@ -23,8 +23,8 @@ export const parallax = (el, start, dist, scrub = true) => {
             start: start,
             end: 'bottom top',
             scrub: scrub,
-            ease: 'power1.inOut'
         },
+        ease: 'power1.inOut',
         y: dist,
     });
 }
@@ -58,15 +58,16 @@ export const animateHeader = (el, links) => {
     });
 }
 
-export const animateText = (links) => {
+export const animateText = (links, start, durationIn) => {
     ScrollTrigger.create({
         trigger: links,
-        start: 'top bottom-=10px',
-        end: 'top bottom-=10px',
+        start: start,
         scrub: 0.2,
         onEnter: () => {
-            gsap.to(links, { y: 0, autoAlpha: 1, duration: 0.25, stagger: 0.1, ease: "power1.out" });
-
+            gsap.to(links, { y: 0, autoAlpha: 1, duration: durationIn, stagger: 0.1, ease: "power1.out" });
+            // if (cards) {
+            //     gsap.to(cards, { y: 0, autoAlpha: 1, duration: durationIn, stagger: 0.1, ease: "power1.out" });
+            // }
         },
         onLeaveBack: () => {
             gsap.to(links, { y: 200, autoAlpha: 0, duration: 0.25, stagger: -0.1, ease: "power1.in" });
@@ -75,28 +76,13 @@ export const animateText = (links) => {
 }
 
 
-// export const animateIcons = (links) => {
-//     ScrollTrigger.create({
-//         trigger: links,
-//         start: 'top bottom-=400px',
-//         end: 'top bottom-=400px',
-//         scrub: 0.2,
-//         onEnter: () => {
-//             gsap.to(links, { x: 0, autoAlpha: 1, duration: 0.45, scale: 1, stagger: 0.1, ease: "power1.out" });
-//         },
-//         onLeaveBack: () => {
-//             gsap.to(links, { x: -200, autoAlpha: 0, duration: 0.25, scale: 0, stagger: 0.1, ease: "power1.in" });
-//         },
-//     });
-// }
-
-
-export const animateButton = (el) => {
+export const animateButton = (el, start) => {
     ScrollTrigger.create({
         trigger: el,
-        start: 'top bottom-=2px',
+        start: start,
         end: 'top bottom-=2px',
         scrub: 0.2,
+        // markers: true,
         onEnter: () => {
             gsap.to(el, { y: 0, autoAlpha: 1, duration: 0.6, ease: "bounce" });
 
@@ -107,3 +93,17 @@ export const animateButton = (el) => {
     });
 }
 
+export const animateThanks = (el) => {
+    gsap.to(el, {
+        scrollTrigger: {
+            trigger: el,
+            start: 'top center',
+            end: 'top top',
+            scrub: 0.2,
+            // markers: true
+        },
+        y: 150,
+        opacity: 1,
+        ease: 'power1.inOut',
+    });
+}

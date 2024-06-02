@@ -25,8 +25,8 @@ export default {
         // const staggerIcons = document.querySelectorAll('.staggerIcon');
 
         // animateIcons(staggerIcons);
-        animateText(staggerTexts);
-        animateButton(this.$refs.button);
+        animateText(staggerTexts, 'top bottom-=10px', 0.25);
+        animateButton(this.$refs.button, 'top bottom-=2px');
     },
 }
 </script>

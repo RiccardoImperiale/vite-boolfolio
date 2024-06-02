@@ -49,12 +49,6 @@ export default {
 </template>
 
 <style scoped>
-/* .glass {
-    background: linear-gradient(90deg, rgba(189, 189, 189, 0) 0%, rgba(189, 189, 189, 0.114) 50%, rgba(189, 189, 189, 0) 100%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-} */
-
 header {
     position: absolute;
     position: fixed;
@@ -70,9 +64,6 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        /* transition: 0.5s ease; */
-
-        /* border-bottom: 1px solid rgba(255, 255, 255, 0.252); */
 
         .logo {
             mix-blend-mode: color-dodge;

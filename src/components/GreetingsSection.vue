@@ -1,9 +1,8 @@
 <script>
 import { store } from '../store.js'
-
 import TextSlider from './TextSlider.vue'
 import OvalTransition from "./OvalTransition.vue";
-
+import { animateButton } from '../assets/gsap/animations.js';
 
 export default {
     name: 'GreetingsSection',
@@ -22,7 +21,15 @@ export default {
         },
         isCursor(val) {
             store.isCustomCursor = val
-        }
+        },
+    },
+    mounted() {
+        this.$nextTick(() => {
+            const gitHubBtn = this.$refs.gitHubBtn;
+            if (gitHubBtn) {
+                animateButton(gitHubBtn, 'top+=1000px bottom');
+            }
+        });
     },
 }
 </script>
@@ -30,40 +37,48 @@ export default {
 <template>
     <div class="white_wrapper">
         <!-- text slide -->
-        <TextSlider class="textSlider" color="var(--pf-gray-300)" @mouseover="isOver(true)" @mouseleave="isOver(false)"
+        <TextSlider class="textSlider" color="var(--pf-gray-700)" @mouseover="isOver(true)" @mouseleave="isOver(false)"
             text="Thanks For Watching / Thanks For Watching / Thanks For Watching / Thanks For Watching /" />
 
         <!-- btn -->
-        <button class="btn" @mouseover="isCursor(true)" @mouseleave="isCursor(false)">
-            <a href="https://github.com/RiccardoImperiale" target="_blank">
-                <div class="btn_in">
-                    <img width="25" src="/img/logo-gray100.png" alt="site logo">
-                </div>
-                <img class="gh_logo" width="76" src="/img/logo-github-gray.png" alt="git hub logo">
-            </a>
-        </button>
+        <div ref="gitHubBtn" class="gitHub_button">
+            <button class="btn" @mouseover="isCursor(true)" @mouseleave="isCursor(false)">
+                <a href="https://github.com/RiccardoImperiale" target="_blank">
+                    <div class="btn_in">
+                        <img width="25" src="/img/logo-gray100.png" alt="site logo">
+                    </div>
+                    <img class="gh_logo" width="76" src="/img/logo-github-gray.png" alt="git hub logo">
+                </a>
+            </button>
+        </div>
+
     </div>
     <OvalTransition />
-
-
 </template>
 
 <style scoped>
+.gitHub_button {
+    transform: translateY(200px);
+    opacity: 0;
+    visibility: hidden;
+}
+
 .white_wrapper {
     background-color: var(--pf-gray-100);
     position: relative;
-    height: 500px;
+    height: 600px;
     z-index: 2;
 
+
     .textSlider {
-        background-color: aqua;
-        top: 3rem;
         height: 0;
+        top: 5rem;
     }
+
 
     .btn {
         position: absolute;
-        top: 20rem;
+        top: 25rem;
         left: 0;
         right: 0;
         transition: .25s ease;

@@ -1,23 +1,22 @@
 <script>
 import { store } from '../store.js'
-// import { animateText } from "../assets/gsap/animations.js";
+import { animateText } from "../assets/gsap/animations.js";
 
 import BouncyLine from "./BouncyLine.vue";
 import ProjectsFeatured from './ProjectsFeatured.vue';
 import GreetingsSection from './GreetingsSection.vue'
 
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
-
 export default {
     name: 'SectionWorks',
+    data() {
+        return {
+            store
+        }
+    },
     components: {
         BouncyLine,
         ProjectsFeatured,
-        GreetingsSection
+        GreetingsSection,
     },
     methods: {
         isOver(val) {
@@ -25,30 +24,14 @@ export default {
         },
     },
     mounted() {
-        const staggerText = document.querySelectorAll('.staggerWorksSection');
-        // animateText(staggerTexts);
-        ScrollTrigger.create({
-            trigger: staggerText,
-            start: 'top center',
-            end: 'top center',
-            scrub: 0.2,
-            markers: true,
-            onEnter: () => {
-                gsap.to(staggerText, { y: 0, autoAlpha: 1, duration: 0.25, stagger: 0.1, ease: "power1.out" });
-
-            },
-            onLeaveBack: () => {
-                gsap.to(staggerText, { y: 200, autoAlpha: 0, duration: 0.25, stagger: -0.1, ease: "power1.in" });
-            },
-        });
+        const staggerTexts = document.querySelectorAll('.staggerWorksSection');
+        animateText(staggerTexts, 'top center+=100px', 0.6);
     },
 }
 </script>
 
 <template>
     <section id="works">
-        <!-- <div class="color_gradient"></div> -->
-
         <div class="container staggerWorksSection">
             <div class="section_title">
                 <div class="dot"></div>
@@ -78,9 +61,8 @@ export default {
                 <div class="dot"></div>
             </div>
         </router-link>
-
-        <GreetingsSection />
     </section>
+    <GreetingsSection />
 </template>
 
 <style scoped>
@@ -93,115 +75,73 @@ export default {
 #works {
     padding-top: 5rem;
     margin-top: -80vh;
-    /* z-index: 2; */
-}
 
-.dot {
-    background-color: var(--pf-accent-b);
-    width: 5px;
-    height: 5px;
-    margin: 2rem auto;
-    aspect-ratio: 1;
-    border-radius: 50%;
-}
+    .section_title {
+        color: var(--pf-gray-300);
+    }
 
-.text p {
-    color: var(--pf-gray-900);
-}
+    .dot {
+        background-color: var(--pf-accent-b);
+        width: 5px;
+        height: 5px;
+        margin: 2rem auto;
+        aspect-ratio: 1;
+        border-radius: 50%;
+    }
 
+    .text p {
+        color: var(--pf-gray-900);
+    }
 
-.all_projects_link {
-    display: flex;
-    text-decoration: none;
-    flex-direction: column;
-    background-color: var(--pf-accent-);
-
-    .link_container {
-        overflow: hidden;
-        height: 55px;
-        width: 220px;
+    .all_projects_link {
+        display: flex;
+        text-decoration: none;
+        flex-direction: column;
+        width: fit-content;
         margin: auto;
-        border: 1px dashed var(--pf-gray-800);
-        border-radius: 55px;
-        background-color: var(--pf-gray-800);
-        transition: .45s ease;
 
-        &:hover {
-            background-color: var(--pf-gray-200);
-            background-color: var(--pf-gray-200);
-            border: 1px dashed var(--pf-gray-700);
-        }
+        .link_container {
+            overflow: hidden;
+            height: 55px;
+            width: 220px;
+            margin: auto;
+            border: 1px dashed var(--pf-gray-800);
+            border-radius: 55px;
+            background-color: var(--pf-gray-800);
+            transition: .45s ease;
 
-        &:hover .nav_link {
-            transform: translateY(-39px);
-            color: var(--pf-gray-800);
-        }
+            &:hover {
+                background-color: transparent;
+                border: 1px dashed var(--pf-gray-700);
+            }
 
-        .nav_link {
-            margin-top: 13px;
-            text-align: center;
-            display: block;
-            text-decoration: none;
-            color: var(--pf-gray-300);
-            font-size: 1.25rem;
-            transition: .3s ease;
-        }
+            &:hover .nav_link {
+                transform: translateY(-39px);
+                color: var(--pf-gray-800);
+            }
 
-        .nav_link:nth-of-type(2) {
-            padding-top: 2px;
+            .nav_link {
+                margin-top: 13px;
+                text-align: center;
+                display: block;
+                text-decoration: none;
+                color: var(--pf-gray-300);
+                font-size: 1.25rem;
+                transition: .3s ease;
+            }
+
+            .nav_link:nth-of-type(2) {
+                padding-top: 2px;
+            }
         }
     }
+
+    .dot_wrapper {
+        background-color: var(--pf-gray-100);
+        height: 100%;
+        width: 100%;
+        margin: 0%;
+    }
+
 }
-
-.dot_wrapper {
-    background-color: var(--pf-gray-100);
-    height: 100%;
-    width: 100%;
-    margin: 0%;
-}
-
-
-
-/* .color_gradient,
-.color_gradient_reverse {
-    position: absolute;
-    width: 100%;
-}
-
-.color_gradient {
-    height: 550px;
-    top: -550px;
-    background-image: linear-gradient(var(--pf-gray-800), var(--pf-gray-900));
-}
-
-.color_gradient_reverse {
-    z-index: -1;
-    height: 650px;
-    bottom: 0;
-    background-color: var(--pf-gray-100);
-} */
-
-
-/* BIG ICONS -----------------------------> */
-
-/* .icon3d {
-    right: -6rem;
-    top: -8rem;
-    filter: drop-shadow(70px 20px 10px rgba(0, 0, 0, 0.198));
-}
-
-.violet_blur {
-    right: -22rem;
-    top: -16rem;
-}
-
-.violet_blur2 {
-    left: -30rem;
-    top: -10rem;
-} */
-
-/* .violet_blur3 {
-    right: -40rem;
-    bottom: 0rem;
-} */
 </style>
