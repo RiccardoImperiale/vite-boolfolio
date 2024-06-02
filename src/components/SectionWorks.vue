@@ -80,13 +80,6 @@ export default {
         </router-link>
 
         <GreetingsSection />
-
-
-        <!-- big icon -->
-        <!-- <img class="icon3d" width="370" src="/img/3d-icon-2.png" alt="spaceship icon">
-        <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
-        <img class="violet_blur2" width="900" src="/img/violet-blur.png" alt=""> -->
-
     </section>
 </template>
 
@@ -99,9 +92,8 @@ export default {
 
 #works {
     padding-top: 5rem;
-    margin-top: -50vh;
+    margin-top: -80vh;
     /* z-index: 2; */
-    border: 1px solid saddlebrown;
 }
 
 .dot {

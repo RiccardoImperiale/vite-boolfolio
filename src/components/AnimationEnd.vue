@@ -8,7 +8,7 @@ export default {
     name: 'AnimationEnd',
     data() {
         return {
-            frameOutCount: 49,
+            frameOutCount: 55,
         }
     },
     mounted() {

@@ -70,6 +70,7 @@ export default {
         <div class="container">
             <BouncyLine lineColor="var(--pf-gray-300)" />
         </div>
+
     </section>
     <div class="bg-helper"></div>
 </template>
@@ -86,7 +87,7 @@ export default {
     position: absolute;
     height: 1900px;
     width: 100%;
-    bottom: -1500px;
+    bottom: -95rem;
     z-index: -1;
 }
 
