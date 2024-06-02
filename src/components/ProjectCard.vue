@@ -28,7 +28,7 @@ export default {
     display: block;
     width: 100%;
     aspect-ratio: 1;
-    border-radius: .5rem;
+    border-radius: .25rem;
     z-index: 1;
     overflow: hidden;
     position: relative;
@@ -38,7 +38,6 @@ export default {
 
     .btn {
         cursor: default;
-        background-color: var(--pf-accent);
         width: 75px;
         height: 75px;
         border-radius: 75px;
@@ -47,6 +46,10 @@ export default {
         position: absolute;
         overflow: hidden;
         z-index: 1;
+        border: 1px solid transparent;
+        background: rgba(255, 255, 255, 0.159);
+        backdrop-filter: blur(2.5px);
+        -webkit-backdrop-filter: blur(2px);
 
         .logo {
             top: 0;
@@ -56,6 +59,7 @@ export default {
             display: flex;
             align-items: center;
             justify-content: center;
+            /* filter: invert(); */
 
             & img {
                 margin-bottom: 5px;
@@ -76,8 +80,12 @@ export default {
                 white-space: nowrap;
                 letter-spacing: .5px;
                 font-size: 1rem;
-                color: var(--pf-gray-300);
+                color: var(--pf-gray-100);
                 cursor: pointer;
+
+                &:hover {
+                    color: var(--pf-accent-b);
+                }
             }
 
             .text_left {
@@ -92,8 +100,11 @@ export default {
         }
 
         &:hover {
-            width: 350px;
-            background-color: var(--pf-gray-700);
+            width: 325px;
+            background: rgba(43, 43, 43, 0.345);
+            border: 1px solid rgb(65, 65, 65);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(2px);
             z-index: 0;
         }
 
@@ -107,6 +118,7 @@ export default {
 
         &:hover .btn_in .text_left {
             transform: translateX(0);
+
         }
 
         &:hover .btn_in .text_right {

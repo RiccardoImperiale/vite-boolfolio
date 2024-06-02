@@ -27,7 +27,7 @@ export default {
         this.$nextTick(() => {
             const gitHubBtn = this.$refs.gitHubBtn;
             if (gitHubBtn) {
-                animateButton(gitHubBtn, 'top+=1000px bottom');
+                animateButton(gitHubBtn, 'top+=650px bottom');
             }
         });
     },
