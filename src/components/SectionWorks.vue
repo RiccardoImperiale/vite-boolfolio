@@ -1,25 +1,46 @@
 <script>
 import { store } from '../store.js'
+// import { animateText } from "../assets/gsap/animations.js";
+
 import BouncyLine from "./BouncyLine.vue";
-import OvalTransition from "./OvalTransition.vue";
-import TextSlider from "./TextSlider.vue";
 import ProjectsFeatured from './ProjectsFeatured.vue';
+import GreetingsSection from './GreetingsSection.vue'
+
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 export default {
     name: 'SectionWorks',
     components: {
         BouncyLine,
-        OvalTransition,
-        TextSlider,
-        ProjectsFeatured
+        ProjectsFeatured,
+        GreetingsSection
     },
     methods: {
         isOver(val) {
             store.isHovered = val
         },
-        isCursor(val) {
-            store.isCustomCursor = val
-        }
+    },
+    mounted() {
+        const staggerText = document.querySelectorAll('.staggerWorksSection');
+        // animateText(staggerTexts);
+        ScrollTrigger.create({
+            trigger: staggerText,
+            start: 'top center',
+            end: 'top center',
+            scrub: 0.2,
+            markers: true,
+            onEnter: () => {
+                gsap.to(staggerText, { y: 0, autoAlpha: 1, duration: 0.25, stagger: 0.1, ease: "power1.out" });
+
+            },
+            onLeaveBack: () => {
+                gsap.to(staggerText, { y: 200, autoAlpha: 0, duration: 0.25, stagger: -0.1, ease: "power1.in" });
+            },
+        });
     },
 }
 </script>
@@ -28,13 +49,13 @@ export default {
     <section id="works">
         <!-- <div class="color_gradient"></div> -->
 
-        <div class="container">
+        <div class="container staggerWorksSection">
             <div class="section_title">
                 <div class="dot"></div>
                 <div>works</div>
             </div>
         </div>
-        <div ref="container" class="container">
+        <div ref="container" class="container staggerWorksSection">
             <div class="text no_select">
                 <p @mouseover="isOver(true)" @mouseleave="isOver(false)">
                     from concept to deployment <br>
@@ -45,10 +66,10 @@ export default {
         </div>
 
         <!-- SELECTED PROJECTS  -->
-        <ProjectsFeatured />
+        <ProjectsFeatured class="staggerWorksSection" />
 
         <!-- ALL PROJECTS LINK  -->
-        <router-link class="all_projects_link" to="/projects">
+        <router-link class="all_projects_link staggerWorksSection" to="/projects">
             <div class="link_container">
                 <span class="nav_link">see all projects</span>
                 <span class="nav_link">see all projects</span>
@@ -58,38 +79,29 @@ export default {
             </div>
         </router-link>
 
-        <!-- <div class="color_gradient_reverse"></div> -->
-        <div class="white_wrapper">
-            <!-- text slide -->
-            <TextSlider class="textSlider" color="var(--pf-gray-300)" @mouseover="isOver(true)"
-                @mouseleave="isOver(false)"
-                text="Thanks For Watching / Thanks For Watching / Thanks For Watching / Thanks For Watching /" />
+        <GreetingsSection />
 
-            <!-- btn -->
-            <button class="btn" @mouseover="isCursor(true)" @mouseleave="isCursor(false)">
-                <a href="https://github.com/RiccardoImperiale" target="_blank">
-                    <div class="btn_in">
-                        <img width="25" src="/img/logo-gray100.png" alt="site logo">
-                    </div>
-                    <img class="gh_logo" width="76" src="/img/logo-github-gray.png" alt="git hub logo">
-                </a>
-            </button>
-        </div>
+
         <!-- big icon -->
         <!-- <img class="icon3d" width="370" src="/img/3d-icon-2.png" alt="spaceship icon">
         <img class="violet_blur" width="600" src="/img/violet-blur.png" alt="">
         <img class="violet_blur2" width="900" src="/img/violet-blur.png" alt=""> -->
 
     </section>
-    <!-- <OvalTransition /> -->
 </template>
 
 <style scoped>
+.staggerWorksSection {
+    transform: translateY(200px);
+    opacity: 0;
+    visibility: hidden;
+}
+
 #works {
     padding-top: 5rem;
-    margin-top: -40rem;
-    z-index: 2;
-    background-color: rebeccapurple;
+    margin-top: -50vh;
+    /* z-index: 2; */
+    border: 1px solid saddlebrown;
 }
 
 .dot {
@@ -110,6 +122,7 @@ export default {
     display: flex;
     text-decoration: none;
     flex-direction: column;
+    background-color: var(--pf-accent-);
 
     .link_container {
         overflow: hidden;
@@ -155,58 +168,7 @@ export default {
     margin: 0%;
 }
 
-.white_wrapper {
-    background-color: var(--pf-gray-100);
-    position: relative;
-    height: 500px;
-    background-color: rebeccapurple;
 
-    .textSlider {
-        background-color: aqua;
-        top: 3rem;
-        height: 0;
-    }
-
-    .btn {
-        position: absolute;
-        top: 20rem;
-        left: 0;
-        right: 0;
-        transition: .25s ease;
-        background-color: transparent;
-
-        & a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn_in {
-            transform: translateX(0);
-            background-color: var(--pf-accent);
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .gh_logo {
-            position: absolute;
-            top: 80px;
-            transition: .45s ease;
-        }
-
-        &:hover .btn_in {
-            transform: translateY(100%);
-            /* scale: 2; */
-        }
-
-        &:hover .gh_logo {
-            top: -2px;
-        }
-    }
-
-}
 
 /* .color_gradient,
 .color_gradient_reverse {

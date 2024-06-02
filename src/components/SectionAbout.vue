@@ -21,8 +21,8 @@ export default {
         }
     },
     mounted() {
-        const staggerTexts = document.querySelectorAll('.staggerText');
-        const staggerIcons = document.querySelectorAll('.staggerIcon');
+        const staggerTexts = document.querySelectorAll('.staggerAboutSection');
+        // const staggerIcons = document.querySelectorAll('.staggerIcon');
 
         // animateIcons(staggerIcons);
         animateText(staggerTexts);
@@ -33,14 +33,13 @@ export default {
 
 <template>
     <section ref="aboutSection" id="about">
-        <div class="container staggerText">
+        <div class="container staggerAboutSection">
             <div class="section_title">
                 <div class="dot"></div>
                 <div>about</div>
-                <!-- <img height="35" src="/img/about.png" alt="about title"> -->
             </div>
         </div>
-        <div class="container staggerText">
+        <div class="container staggerAboutSection">
             <div class="text no_select">
                 <p @mouseover="isOver(true)" @mouseleave="isOver(false)">
                     Web Developer
@@ -71,23 +70,28 @@ export default {
         <div class="container">
             <BouncyLine lineColor="var(--pf-gray-300)" />
         </div>
-        <!-- <OvalTransition /> -->
-
-        <!-- big icon -->
-        <!-- <img class="staggerIcon icon3d" width="270" src="/img/3d-icon-1.png" alt="spaceship icon">
-        <img class="staggerIcon violet_blur" width="600" src="/img/violet-blur.png" alt="violet blur light"> -->
     </section>
+    <div class="bg-helper"></div>
 </template>
 
 <style scoped>
 #about {
     padding-top: 6rem;
     padding-bottom: 10rem;
-    z-index: 3;
+    z-index: 1;
+}
+
+.bg-helper {
+    background-color: var(--pf-gray-800);
+    position: absolute;
+    height: 1900px;
+    width: 100%;
+    bottom: -1500px;
+    z-index: -1;
 }
 
 .btn_wrapper,
-.staggerText {
+.staggerAboutSection {
     transform: translateY(200px);
     opacity: 0;
     visibility: hidden;

@@ -33,7 +33,7 @@ html {
 body {
   /* overflow: overlay; */
   overflow-x: hidden;
-  background-color: var(--pf-gray-800);
+  background-color: var(--pf-gray-100);
   width: 100vw;
   font-family: "Syne", sans-serif;
 }
