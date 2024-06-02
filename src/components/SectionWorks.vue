@@ -82,8 +82,8 @@ export default {
 
     .dot {
         background-color: var(--pf-accent-b);
-        width: 5px;
-        height: 5px;
+        width: 6px;
+        height: 6px;
         margin: 2rem auto;
         aspect-ratio: 1;
         border-radius: 50%;
