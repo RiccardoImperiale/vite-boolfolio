@@ -38,8 +38,11 @@ export default {
 <template>
     <div class="container projects_container">
         <div v-if="!store.loading" class="projects">
-            <ProjectCard v-for="project in projects" :key="project.id"
-                :imageSrc="base_api_url + '/storage/' + project.image" />
+            <template v-for="project in projects" :key="project.id">
+                <router-link class="router_links" :to="`/projects/${project.slug}`">
+                    <ProjectCard :imageSrc="base_api_url + '/storage/' + project.image" />
+                </router-link>
+            </template>
         </div>
         <div class="loader" v-else>
             Loading...
@@ -69,19 +72,15 @@ export default {
     color: var(--pf-gray-800);
 }
 
-/* @media screen and (min-width: 720px) {
-    .projects_container {
-        height: 1476px;
-
-
+@media screen and (min-width: 720px) {
+    .router_links {
+        width: calc(100% / 2 - 1rem + (1rem / 3));
     }
-} */
+}
 
-/* @media screen and (min-width: 1280px) {
-    .projects_container {
-        height: 1476px;
-        height: 825px;
-
+@media screen and (min-width: 1280px) {
+    .router_links {
+        width: calc(100% / 3 - 1rem + (1rem / 3));
     }
-} */
+}
 </style>

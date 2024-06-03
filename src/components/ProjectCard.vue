@@ -138,7 +138,7 @@ export default {
     }
 }
 
-@media screen and (min-width: 720px) {
+/* @media screen and (min-width: 720px) {
     .project_card {
         width: calc(100% / 2 - 1rem + (1rem / 3));
     }
@@ -148,5 +148,5 @@ export default {
     .project_card {
         width: calc(100% / 3 - 1rem + (1rem / 3));
     }
-}
+} */
 </style>
