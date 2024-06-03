@@ -14,7 +14,6 @@ export default {
         return {
             xPercent: 0,
             direction: 1,
-            animationFrameId: null,
         }
     },
     methods: {
