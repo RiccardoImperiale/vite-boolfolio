@@ -52,7 +52,7 @@ export default {
         <ProjectsFeatured class="staggerWorksSection" />
 
         <!-- ALL PROJECTS LINK  -->
-        <router-link class="all_projects_link staggerWorksSection" to="/projects">
+        <router-link class="all_projects_link staggerWorksSection" :to="{ name: 'projects' }">
             <div class="link_container">
                 <span class="nav_link">see all projects</span>
                 <span class="nav_link">see all projects</span>
