@@ -35,19 +35,21 @@ export default {
 </script>
 
 <template>
-    <div class="container project_container">
-        <div v-if="!loading" class="project">
-            <div class="image">
-                <img :src="base_api_url + '/storage/' + project.image" alt="">
+    <div class="project_container">
+        <div class="container ">
+            <div v-if="!loading" class="project_card">
+                <div class="image">
+                    <img :src="base_api_url + '/storage/' + project.image" alt="">
+                </div>
+                <div class="text">
+                    <h2>
+                        {{ project.title }}
+                    </h2>
+                </div>
             </div>
-            <div class="text">
-                <h2>
-                    {{ project.title }}
-                </h2>
+            <div class="loader" v-else>
+                Loading...
             </div>
-        </div>
-        <div class="loader" v-else>
-            Loading...
         </div>
     </div>
 </template>
@@ -56,7 +58,7 @@ export default {
 .project_container {
     padding: 5rem 0;
 
-    .project {
+    .project_card {
         display: flex;
         flex-direction: column;
 
