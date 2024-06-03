@@ -47,8 +47,11 @@ export default {
 <template>
     <div class="container projects_container">
         <div v-if="!loading" class="projects">
-            <ProjectCard v-for="project in projects.data" :key="project.id"
-                :imageSrc="base_api_url + '/storage/' + project.image" />
+            <template v-for="project in projects.data" :key="project.id">
+                <router-link :to="`/projects/${project.slug}`">
+                    <ProjectCard :imageSrc="base_api_url + '/storage/' + project.image" />
+                </router-link>
+            </template>
         </div>
         <div class="loader" v-else>
             Loading...
