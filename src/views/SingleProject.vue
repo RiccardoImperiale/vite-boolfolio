@@ -21,7 +21,7 @@ export default {
                         this.project = res.data.response
                         this.loading = false
                     } else {
-
+                        this.$router.push({ name: 'NotFound' });
                     }
                 })
                 .catch(err => console.error(err))
