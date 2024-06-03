@@ -1,10 +1,8 @@
 <script>
-import { parallax, textSlideLoop } from "../assets/gsap/animations.js";
+// import { parallax, textSlideLoop } from "../assets/gsap/animations.js";
+import { textSlideLoop } from "../assets/gsap/animations.js";
 
 import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default {
     name: 'TextSlider',
@@ -16,10 +14,15 @@ export default {
         return {
             xPercent: 0,
             direction: 1,
+            animationFrameId: null,
         }
     },
     methods: {
         animation() {
+            if (!this.$refs.firstText || !this.$refs.secondText) {
+                return;
+            }
+
             if (this.xPercent <= -100) {
                 this.xPercent = 0;
             }
