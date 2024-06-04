@@ -89,7 +89,6 @@ export default {
 }
 
 .form_inputs {
-    /* margin-bottom: 3rem; */
 
     & input {
         height: 168px;
@@ -101,7 +100,6 @@ export default {
         color: var(--pf-gray-100);
         font-weight: 500;
         caret-color: var(--pf-accent-b);
-        transform: translateY(-8px);
 
         &:focus {
             outline: none;
@@ -115,7 +113,6 @@ export default {
 }
 
 .validation {
-    margin-top: .5rem;
     margin-bottom: 3rem;
     padding-bottom: 0.5rem;
     width: 100%;

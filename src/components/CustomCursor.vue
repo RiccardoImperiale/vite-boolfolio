@@ -55,8 +55,8 @@ export default {
 </script>
 
 <template>
-    <div class="custom_cursor pointer-events-none"
-        :style="{ width: size, height: size, backgroundColor: colorStyle, mixBlendMode: blendStyle }" ref="circle">
+    <div class="custom_cursor pointer-events-none" :style="{ width: size, height: size, backgroundColor: colorStyle }"
+        ref="circle">
     </div>
 </template>
 <style scoped>

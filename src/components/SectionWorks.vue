@@ -79,7 +79,7 @@ export default {
         background-color: var(--pf-accent-b);
         width: 6px;
         height: 6px;
-        margin: 2rem auto;
+        margin-bottom: 1rem;
         aspect-ratio: 1;
         border-radius: 50%;
     }
@@ -135,7 +135,9 @@ export default {
         background-color: var(--pf-gray-100);
         height: 100%;
         width: 100%;
-        margin: 0%;
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
     }
 
 }

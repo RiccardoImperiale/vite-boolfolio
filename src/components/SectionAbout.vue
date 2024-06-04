@@ -47,7 +47,7 @@ export default {
             </div>
         </div>
 
-        <div ref="button" class="btn_wrapper">
+        <div id="zzz" ref="button" class="btn_wrapper">
             <button class="btn">
                 <div class="btn_in">
                     <span class="name">Download</span>
@@ -73,10 +73,20 @@ export default {
 </template>
 
 <style scoped>
+#zzz {
+    z-index: 2342 !important;
+    position: static;
+
+    .btn {
+        z-index: 2342 !important;
+        position: static;
+    }
+}
+
 #about {
     padding-top: 6rem;
     padding-bottom: 10rem;
-    z-index: 1;
+    z-index: 2;
 }
 
 .bg-helper {
@@ -103,6 +113,8 @@ export default {
 
 .btn {
     margin-bottom: 9rem;
+    position: relative;
+    z-index: 868;
 
     .name {
         transform: translateX(-150px);
