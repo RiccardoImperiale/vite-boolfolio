@@ -3,29 +3,37 @@ import { store } from '../store';
 
 export default {
     name: 'ProjectCard',
-    data() {
-        return {
-            store
-        }
-    },
     props: {
         imageSrc: String
-    }
+    },
+    data() {
+        return {
+            store,
+            imageHover: false
+        }
+    },
+    methods: {
+        changeImageStyle(val) {
+            this.imageHover = val
+        },
+    },
 }
 </script>
 
 <template>
     <div class="project_card">
-        <button @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false" class="btn">
-            <div class="logo">
-                <img width="25" src="/img/logo-gray100.png" alt="">
-            </div>
-            <div class="btn_in">
-                <span class="text_left">Live Version</span>
-                <span class="text_right">Source Code</span>
-            </div>
-        </button>
-        <img class="project_image" :src="imageSrc" alt="">
+        <div @mouseover="changeImageStyle(true)" @mouseleave="changeImageStyle(false)" class="btn_container">
+            <button @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false" class="btn">
+                <div class="logo">
+                    <img width="25" src="/img/logo-gray100.png" alt="logo">
+                </div>
+                <div class="btn_in">
+                    <span class="text_left">Live Version</span>
+                    <span class="text_right">Source Code</span>
+                </div>
+            </button>
+        </div>
+        <img :class="{ imageHover: imageHover }" class="project_image" :src="imageSrc" alt="project cover image">
     </div>
 </template>
 
@@ -42,6 +50,14 @@ export default {
     align-items: center;
     justify-content: center;
 
+    .btn_container {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        z-index: 3;
+    }
+
     .btn {
         cursor: default;
         width: 75px;
@@ -49,7 +65,6 @@ export default {
         border-radius: 75px;
         border: none;
         transition: .45s ease;
-        position: absolute;
         overflow: hidden;
         z-index: 1;
         background-color: var(--pf-gray-100);
@@ -102,13 +117,13 @@ export default {
 
                 &::after {
                     content: '';
-                    width: 4px;
-                    height: 4px;
+                    width: 5px;
+                    height: 5px;
                     border-radius: 50%;
                     background-color: var(--pf-accent-b);
                     filter: invert();
                     position: absolute;
-                    bottom: -10px;
+                    bottom: -9px;
                     margin: auto;
                     right: 0;
                     left: 0;
@@ -139,10 +154,6 @@ export default {
             transform: translateX(0px);
         }
 
-        &:hover .project_image {
-            scale: 2;
-        }
-
         &:hover .btn_in .text_left {
             transform: translateX(0);
         }
@@ -151,14 +162,19 @@ export default {
             transform: translateX(0);
         }
     }
+}
 
+.project_image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform .5s ease;
+}
 
-    .project_image {
-        width: 100%;
-        aspect-ratio: 1;
-        object-fit: cover;
-        object-position: top;
-        display: block;
-    }
+.imageHover {
+    transform: scale(1.2) rotate(-10deg);
+    filter: blur(1.2px);
 }
 </style>
