@@ -50,9 +50,9 @@ export default {
         <div id="zzz" ref="button" class="btn_wrapper">
             <button class="btn">
                 <div class="btn_in">
-                    <span class="name">Download</span>
+                    <!-- <span class="text_left">Download</span> -->
                     <img width="25" src="/img/logo-gray100.png" alt="">
-                    <span class="location">Full CV</span>
+                    <span class="text_right">Download Full CV</span>
                 </div>
             </button>
         </div>
@@ -73,16 +73,6 @@ export default {
 </template>
 
 <style scoped>
-#zzz {
-    z-index: 2342 !important;
-    position: static;
-
-    .btn {
-        z-index: 2342 !important;
-        position: static;
-    }
-}
-
 #about {
     padding-top: 6rem;
     padding-bottom: 10rem;
@@ -113,21 +103,21 @@ export default {
 
 .btn {
     margin-bottom: 9rem;
-    position: relative;
-    z-index: 868;
 
-    .name {
-        transform: translateX(-150px);
+    .btn_in {
+        transform: translateX(74px);
+        gap: 1rem;
         transition: .5s ease;
     }
 
-    .location {
-        transform: translateX(150px);
+    .text_right {
+        transform: translateX(50px);
         transition: .5s ease;
+        font-size: 1rem;
     }
 
     &:hover {
-        width: 350px;
+        width: 280px;
         background-color: var(--pf-gray-700);
         z-index: 0;
     }
@@ -136,12 +126,8 @@ export default {
         transform: translateX(0px);
     }
 
-    &:hover .btn_in .name {
-        transform: translateX(0);
-    }
-
-    &:hover .btn_in .location {
-        transform: translateX(0);
+    &:hover .btn_in .text_right {
+        transform: translateX(10px);
     }
 }
 

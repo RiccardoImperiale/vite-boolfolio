@@ -51,7 +51,6 @@ export default {
         backdrop-filter: blur(2.5px);
         -webkit-backdrop-filter: blur(2px); */
 
-
         .logo {
             top: 0;
             position: absolute;
@@ -137,16 +136,4 @@ export default {
         display: block;
     }
 }
-
-/* @media screen and (min-width: 720px) {
-    .project_card {
-        width: calc(100% / 2 - 1rem + (1rem / 3));
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .project_card {
-        width: calc(100% / 3 - 1rem + (1rem / 3));
-    }
-} */
 </style>
