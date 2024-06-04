@@ -1,7 +1,13 @@
 <script>
+import { store } from '../store';
 
 export default {
     name: 'ProjectCard',
+    data() {
+        return {
+            store
+        }
+    },
     props: {
         imageSrc: String
     }
@@ -10,7 +16,7 @@ export default {
 
 <template>
     <div class="project_card">
-        <button class="btn">
+        <button @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false" class="btn">
             <div class="logo">
                 <img width="25" src="/img/logo-gray100.png" alt="">
             </div>
@@ -79,23 +85,43 @@ export default {
                 font-family: "Syne", sans-serif;
                 white-space: nowrap;
                 letter-spacing: .5px;
-                font-size: 1rem;
+                font-size: .95rem;
                 color: var(--pf-gray-300);
                 cursor: pointer;
+                transition: .25s ease;
+                position: relative;
 
                 &:hover {
                     color: var(--pf-gray-900);
+
+                    &::after {
+                        opacity: 1;
+                        transition: .5s ease;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: var(--pf-accent-b);
+                    filter: invert();
+                    position: absolute;
+                    bottom: -10px;
+                    margin: auto;
+                    right: 0;
+                    left: 0;
+                    opacity: 0;
                 }
             }
 
             .text_left {
                 transform: translateX(-150px);
-                transition: .5s ease;
             }
 
             .text_right {
                 transform: translateX(150px);
-                transition: .5s ease;
             }
         }
 
@@ -103,7 +129,7 @@ export default {
             width: 325px;
             background-color: var(--pf-gray-100);
 
-            /* background: rgba(43, 43, 43, 0.345);
+            /* background: rgba(233, 233, 233, 0.345);
             backdrop-filter: blur(3px);
             -webkit-backdrop-filter: blur(2px); */
             z-index: 0;
@@ -119,7 +145,6 @@ export default {
 
         &:hover .btn_in .text_left {
             transform: translateX(0);
-
         }
 
         &:hover .btn_in .text_right {
