@@ -5,9 +5,13 @@ import { animateHeader } from '../assets/gsap/animations.js';
 
 export default {
     name: 'AppHeader',
+    props: {
+        color: String,
+    },
     data() {
         return {
-            store
+            store,
+            isHome: null,
         }
     },
     mounted() {
@@ -15,12 +19,23 @@ export default {
         const links = document.querySelectorAll('.link_container')
 
         animateHeader(header, links);
+        console.log(this.$route.name);
+    },
+    watch: {
+        '$route'(to) {
+            if (to.name === 'home') {
+                this.isHome = true;
+            } else {
+                this.isHome = false;
+            }
+        }
     }
 }
 </script>
 
 <template>
-    <header ref="header" @mouseover="store.isCursorHidden = true" @mouseleave="store.isCursorHidden = false">
+    <header :class="isHome || 'invert'" ref="header" @mouseover="store.isCursorHidden = true"
+        @mouseleave="store.isCursorHidden = false">
         <nav ref="nav">
             <router-link class="nav_link" to="/">
                 <img class="logo" width=35 src="/img/logo-wt.png" alt="logo">
@@ -48,6 +63,10 @@ export default {
 </template>
 
 <style scoped>
+.invert {
+    filter: invert();
+}
+
 header {
     position: absolute;
     position: fixed;

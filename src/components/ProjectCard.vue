@@ -55,7 +55,7 @@ export default {
         inset: 0;
         display: flex;
         align-items: center;
-        z-index: 3;
+        z-index: 2;
     }
 
     .btn {
@@ -66,7 +66,7 @@ export default {
         border: none;
         transition: .45s ease;
         overflow: hidden;
-        z-index: 1;
+        position: relative;
         background-color: var(--pf-gray-100);
         /* background: rgba(255, 255, 255, 0.159);
         backdrop-filter: blur(2.5px);

@@ -70,6 +70,7 @@ export default {
 #works {
     padding-top: 5rem;
     margin-top: -80vh;
+    z-index: 3;
 
     .section_title {
         color: var(--pf-gray-300);

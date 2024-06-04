@@ -13,7 +13,8 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: AppHome
+            component: AppHome,
+            // meta: { headerColor: 'transparent' }
         },
         {
             path: '/about',

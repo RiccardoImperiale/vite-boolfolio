@@ -10,16 +10,12 @@ export default {
 
 <template>
     <section id="about">
-
-
         <div class="container">
             <div class="section_title">
                 <div class="dot"></div>
                 <div>about</div>
                 <!-- <img height="35" src="/img/about.png" alt="about title"> -->
             </div>
-
-
             <div class="text no_select">
                 <p>
                     Hi, I'm Ricky a Web Developer
@@ -29,7 +25,6 @@ export default {
                 </p>
             </div>
         </div>
-
 
         <!-- <button class="btn">
             <div class="btn_in">
@@ -46,39 +41,34 @@ export default {
     padding: 10rem 0;
 }
 
-/* .left {
-    background-color: aqua;
-} */
-
 .section_title {
-    text-align: left;
-    color: var(--pf-gray-600);
+    text-align: center;
+    color: var(--pf-gray-300);
     text-transform: uppercase;
     font-size: 1.8rem;
     font-weight: 500;
     z-index: 2;
 
     .dot {
-        background-color: greenyellow;
+        background-color: var(--pf-accent-b);
         width: 5px;
         aspect-ratio: 1;
         border-radius: 50%;
-        /* margin: auto; */
         margin-bottom: 1rem;
     }
 }
 
 .text {
-    text-align: left;
+    text-align: center;
     padding-top: 2rem;
     padding-bottom: 4rem;
     display: flex;
-    justify-content: start;
+    justify-content: center;
 
     & p {
         font-size: 2rem;
         font-weight: 700;
-        color: var(--pf-gray-100);
+        color: var(--pf-gray-900);
         line-height: 3rem;
         text-transform: capitalize;
     }
