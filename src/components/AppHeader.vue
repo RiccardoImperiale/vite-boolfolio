@@ -46,26 +46,26 @@ export default {
     <header :class="isHome || 'invert'" ref="header" @mouseover="store.isCursorHidden = true"
         @mouseleave="store.isCursorHidden = false">
         <nav ref="nav">
-            <router-link class="nav_link" to="/">
+            <router-link class="nav_link" :to="{ name: 'home' }">
                 <img class="logo" width=35 src="/img/logo-wt.png" alt="logo">
             </router-link>
             <div class="page_links">
-                <div class="link_container">
-                    <router-link class="nav_link" to="/">HOME</router-link>
-                    <router-link class="nav_link" to="/">HOME</router-link>
-                </div>
-                <div class="link_container">
-                    <router-link class="nav_link" to="/about">ABOUT</router-link>
-                    <router-link class="nav_link" to="/about">ABOUT</router-link>
-                </div>
-                <div class="link_container">
-                    <router-link class="nav_link" to="/projects">ALL PROJECTS</router-link>
-                    <router-link class="nav_link" to="/projects">ALL PROJECTS</router-link>
-                </div>
-                <div class="link_container">
-                    <router-link class="nav_link" to="/contact">CONTACT</router-link>
-                    <router-link class="nav_link" to="/contact">CONTACT</router-link>
-                </div>
+                <router-link class="link_container" :to="{ name: 'home' }">
+                    <div class="nav_link">HOME</div>
+                    <div class="nav_link">HOME</div>
+                </router-link>
+                <router-link class="link_container" :to="{ name: 'about' }">
+                    <div class="nav_link">ABOUT</div>
+                    <div class="nav_link">ABOUT</div>
+                </router-link>
+                <router-link class="link_container" :to="{ name: 'projects' }">
+                    <div class="nav_link">ALL PROJECTS</div>
+                    <div class="nav_link">ALL PROJECTS</div>
+                </router-link>
+                <router-link class="pill" :to="{ name: 'contact' }">
+                    <div class="nav_link">CONTACT</div>
+                    <div class="nav_link">CONTACT</div>
+                </router-link>
             </div>
         </nav>
     </header>
@@ -76,12 +76,35 @@ export default {
     filter: invert();
 }
 
+.pill {
+    background-color: var(--pf-gray-700);
+    padding: 1.25rem 1.5rem;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 20px;
+    text-decoration: none;
+
+    &:hover .nav_link {
+        transform: translateY(-35px);
+    }
+
+    .nav_link {
+        transform: translateY(-8px);
+        margin-bottom: 10px;
+        display: block;
+        color: var(--pf-lighter);
+        font-size: .9rem;
+        opacity: 0.7;
+        transition: .3s ease;
+    }
+}
+
 header {
     position: absolute;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1;
 
     & nav {
         max-width: 1920px;
@@ -100,26 +123,23 @@ header {
         .page_links {
             display: flex;
             gap: 1.5rem;
+            align-items: center;
 
             .link_container {
                 overflow: hidden;
-                height: 20px;
+                height: 17px;
+                text-decoration: none;
 
                 &:hover .nav_link {
-                    transform: translateY(-20px);
+                    transform: translateY(-17px);
                 }
 
                 .nav_link {
                     display: block;
-                    text-decoration: none;
-                    color: white;
+                    color: var(--pf-lighter);
                     font-size: .9rem;
                     opacity: 0.7;
                     transition: .3s ease;
-                }
-
-                .nav_link:nth-of-type(2) {
-                    padding-top: 2px;
                 }
             }
         }
