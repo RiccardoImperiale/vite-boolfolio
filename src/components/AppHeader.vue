@@ -1,6 +1,5 @@
 <script>
 import { store } from '../store.js'
-
 import { animateHeader } from '../assets/gsap/animations.js';
 
 export default {
@@ -19,17 +18,27 @@ export default {
         const links = document.querySelectorAll('.link_container')
 
         animateHeader(header, links);
-        console.log(this.$route.name);
-    },
-    watch: {
-        '$route'(to) {
+
+        // console.log(this.$route.name);
+        // console.log(this.$route.to);
+        // console.log(this.$router.currentRoute.value.name);
+        this.$watch(() => this.$route, (to) => {
             if (to.name === 'home') {
                 this.isHome = true;
             } else {
                 this.isHome = false;
             }
-        }
-    }
+        });
+    },
+    // watch: {
+    //     $route(to) {
+    //         if (to.name === 'home') {
+    //             this.isHome = true;
+    //         } else {
+    //             this.isHome = false;
+    //         }
+    //     }
+    // }
 }
 </script>
 
