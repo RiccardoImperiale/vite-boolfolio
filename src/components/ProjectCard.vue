@@ -23,7 +23,7 @@ export default {
 <template>
     <div class="project_card">
         <div @mouseover="changeImageStyle(true)" @mouseleave="changeImageStyle(false)" class="btn_container">
-            <button @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false" class="btn">
+            <button class="btn">
                 <div class="logo">
                     <img width="25" src="/img/logo-gray100.png" alt="logo">
                 </div>
@@ -121,7 +121,6 @@ export default {
                     height: 5px;
                     border-radius: 50%;
                     background-color: var(--pf-accent-b);
-                    filter: invert();
                     position: absolute;
                     bottom: -9px;
                     margin: auto;
@@ -170,11 +169,12 @@ export default {
     object-fit: cover;
     object-position: top;
     display: block;
-    transition: transform .5s ease;
+    filter: blur(0) brightness(0.6);
+    transition: transform .5s ease, filter .5s ease;
 }
 
 .imageHover {
     transform: scale(1.2) rotate(-10deg);
-    filter: blur(1.2px);
+    filter: blur(1.2px) brightness(1);
 }
 </style>
