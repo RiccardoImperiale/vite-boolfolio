@@ -47,8 +47,8 @@ export const animateHeader = (el, links) => {
         scrub: true,
         ease: 'power2.inOut',
         onEnter: () => {
-            gsap.to(el, { y: -100, autoAlpha: 0, duration: 1 });
-            gsap.to(links, { y: -100, autoAlpha: 0, duration: 1, stagger: 0.1 });
+            gsap.to(el, { y: -100, duration: 1 });
+            gsap.to(links, { y: -100, duration: 1, stagger: 0.1 });
         },
         onLeaveBack: () => {
             gsap.to(el, { y: 0, autoAlpha: 1, duration: 0.5 });

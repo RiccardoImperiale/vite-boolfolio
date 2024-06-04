@@ -39,9 +39,9 @@ export default {
     <div class="container projects_container">
         <div v-if="!store.loading" class="projects">
             <template v-for="project in projects" :key="project.id">
-                <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }">
-                    <ProjectCard :imageSrc="base_api_url + '/storage/' + project.image" />
-                </router-link>
+                <!-- <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }"> -->
+                <ProjectCard class="project_card" :imageSrc="base_api_url + '/storage/' + project.image" />
+                <!-- </router-link> -->
             </template>
         </div>
         <div class="loader" v-else>
@@ -73,13 +73,13 @@ export default {
 }
 
 @media screen and (min-width: 720px) {
-    .router_links {
+    .project_card {
         width: calc(100% / 2 - 1rem + (1rem / 3));
     }
 }
 
 @media screen and (min-width: 1280px) {
-    .router_links {
+    .project_card {
         width: calc(100% / 3 - 1rem + (1rem / 3));
     }
 }

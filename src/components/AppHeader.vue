@@ -79,7 +79,7 @@ export default {
 .nav_link {
     color: var(--pf-lighter);
     font-size: .9rem;
-    opacity: 0.7;
+    opacity: 0.5;
     transition: .3s ease;
 }
 
