@@ -18,7 +18,7 @@ export default {
         this.animate();
         window.addEventListener("mousemove", this.manageMouseMove)
         this.$watch(() => store.isBiggerCursor, this.handleHoverChange);
-        this.$watch(() => store.isCursorHidden, this.handleHeroChange);
+        this.$watch(() => store.isCursorHidden, this.handleHidingChange);
     },
     methods: {
         manageMouseMove(e) {
@@ -43,10 +43,9 @@ export default {
         handleHoverChange(newVal) {
             this.size = newVal ? '250px' : '20px';
         },
-        handleHeroChange(newVal) {
-            this.colorStyle = newVal ? 'var(--pf-gray-300)' : 'var(--pf-cursor)';
+        handleHidingChange(newVal) {
+            // this.colorStyle = newVal ? 'var(--pf-gray-300)' : 'var(--pf-cursor)';
             this.size = newVal ? '0px' : '20px';
-            this.blendStyle = newVal ? 'screen' : 'difference';
         },
         beforeDestroy() {
             window.removeEventListener("mousemove", this.manageMouseMove);
