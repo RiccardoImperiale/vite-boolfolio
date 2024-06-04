@@ -15,14 +15,6 @@ export default {
         TextSlider,
         OvalTransition
     },
-    methods: {
-        isOver(val) {
-            store.isHovered = val
-        },
-        isCursor(val) {
-            store.isCustomCursor = val
-        },
-    },
     mounted() {
         this.$nextTick(() => {
             const gitHubBtn = this.$refs.gitHubBtn;
@@ -37,12 +29,13 @@ export default {
 <template>
     <div class="white_wrapper">
         <!-- text slide -->
-        <TextSlider class="textSlider" color="var(--pf-gray-700)" @mouseover="isOver(true)" @mouseleave="isOver(false)"
+        <TextSlider class="textSlider" color="var(--pf-gray-700)" @mouseover="store.isBiggerCursor = true"
+            @mouseleave="store.isBiggerCursor = false"
             text="Thanks For Watching / Thanks For Watching / Thanks For Watching / Thanks For Watching /" />
 
         <!-- btn -->
         <div ref="gitHubBtn" class="gitHub_button">
-            <button class="btn" @mouseover="isCursor(true)" @mouseleave="isCursor(false)">
+            <button class="btn" @mouseover="store.isCursorHidden = true" @mouseleave="store.isCursorHidden = false">
                 <a href="https://github.com/RiccardoImperiale" target="_blank">
                     <div class="btn_in">
                         <img width="25" src="/img/logo-gray100.png" alt="site logo">

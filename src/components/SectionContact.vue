@@ -4,14 +4,14 @@ import { store } from '../store.js'
 
 export default {
     name: 'SectionContact',
+    data() {
+        return {
+            store
+        }
+    },
     components: {
         BouncyLine
     },
-    methods: {
-        isOver(val) {
-            store.isHovered = val
-        }
-    }
 }
 </script>
 
@@ -28,24 +28,19 @@ export default {
 
             <div ref="container">
                 <div class="text no_select">
-                    <p @mouseover="isOver(true)" @mouseleave="isOver(false)">
+                    <p @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false">
                         Let's Keep In Touch
                     </p>
                 </div>
             </div>
 
-
+            <!-- FORM -->
             <form action="">
                 <div class="form_inputs">
                     <div class="line">
                         <BouncyLine lineColor="var(--pf-gray-300)" />
                     </div>
                     <input type="text" placeholder="Type Your Message...">
-
-                    <div class="line">
-                        <!-- <BouncyLine lineColor="var(--pf-gray-300)" /> -->
-                    </div>
-
                 </div>
                 <div class="validation">
                     <div class="step1 step_success"></div>
@@ -59,16 +54,8 @@ export default {
                     </div>
                 </button>
             </form>
-
-
         </div>
-        <!-- big icon -->
-        <!-- <img class="icon3d" width="300" src="/img/3d-icon-3.png" alt="spaceship icon">
-        <img class="violet_blur" width="600" src="/img/violet-blur.png" alt=""> -->
-        <!-- <img class="violet_blur2" width="1600" src="/img/blue-blur.png" alt=""> -->
-        <!-- <div class="bg"></div> -->
     </section>
-
 </template>
 
 <style scoped>

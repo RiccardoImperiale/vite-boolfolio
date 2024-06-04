@@ -5,11 +5,10 @@ import { animateHeader } from '../assets/gsap/animations.js';
 
 export default {
     name: 'AppHeader',
-
-    methods: {
-        isOver(val) {
-            store.isCustomCursor = val
-        },
+    data() {
+        return {
+            store
+        }
     },
     mounted() {
         const header = this.$refs.header;
@@ -21,7 +20,7 @@ export default {
 </script>
 
 <template>
-    <header ref="header" @mouseover="isOver(true)" @mouseleave="isOver(false)">
+    <header ref="header" @mouseover="store.isCursorHidden = true" @mouseleave="store.isCursorHidden = false">
         <nav ref="nav">
             <router-link class="nav_link" to="/">
                 <img class="logo" width=35 src="/img/logo-wt.png" alt="logo">

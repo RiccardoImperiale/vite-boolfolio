@@ -17,14 +17,17 @@ export default {
                 .get(url)
                 .then(res => {
                     if (res.data.success) {
-                        console.log(res.data.response);
+                        // console.log(res.data.response);
                         this.project = res.data.response
                         this.loading = false
                     } else {
                         this.$router.push({ name: 'NotFound' });
                     }
                 })
-                .catch(err => console.error(err))
+                .catch(err => {
+                    console.error(err)
+                    this.$router.push({ name: 'NotFound' });
+                })
         },
     },
     mounted() {

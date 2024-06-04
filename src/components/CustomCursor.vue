@@ -6,6 +6,7 @@ export default {
     name: 'CustomCursor',
     data() {
         return {
+            // store,
             size: '20px',
             colorStyle: 'none',
             blendStyle: 'none',
@@ -16,8 +17,8 @@ export default {
     mounted() {
         this.animate();
         window.addEventListener("mousemove", this.manageMouseMove)
-        this.$watch(() => store.isHovered, this.handleHoverChange);
-        this.$watch(() => store.isCustomCursor, this.handleHeroChange);
+        this.$watch(() => store.isBiggerCursor, this.handleHoverChange);
+        this.$watch(() => store.isCursorHidden, this.handleHeroChange);
     },
     methods: {
         manageMouseMove(e) {

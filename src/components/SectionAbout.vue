@@ -7,18 +7,15 @@ import OvalTransition from "./OvalTransition.vue";
 
 export default {
     name: 'SectionAbout',
+    data() {
+        return {
+            store
+        }
+    },
     components: {
         BouncyLine,
         LogosSlider,
         OvalTransition
-    },
-    methods: {
-        isOver(val) {
-            store.isHovered = val
-        },
-        isCursor(val) {
-            store.isCustomCursor = val
-        }
     },
     mounted() {
         const staggerTexts = document.querySelectorAll('.staggerAboutSection');
@@ -41,7 +38,7 @@ export default {
         </div>
         <div class="container staggerAboutSection">
             <div class="text no_select">
-                <p @mouseover="isOver(true)" @mouseleave="isOver(false)">
+                <p @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false">
                     Web Developer
                     with a flair for<br> creating engaging
                     and interactive <br>web
@@ -65,7 +62,7 @@ export default {
             <BouncyLine lineColor="var(--pf-gray-300)" />
         </div>
         <div class="logos">
-            <LogosSlider @mouseover="isCursor(true)" @mouseleave="isCursor(false)" />
+            <LogosSlider @mouseover="store.isCursorHidden = true" @mouseleave="store.isCursorHidden = false" />
         </div>
         <div class="container">
             <BouncyLine lineColor="var(--pf-gray-300)" />

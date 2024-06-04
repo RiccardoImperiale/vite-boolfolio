@@ -18,11 +18,6 @@ export default {
         ProjectsFeatured,
         GreetingsSection,
     },
-    methods: {
-        isOver(val) {
-            store.isHovered = val
-        },
-    },
     mounted() {
         const staggerTexts = document.querySelectorAll('.staggerWorksSection');
         animateText(staggerTexts, 'top center+=100px', 0.6);
@@ -40,7 +35,7 @@ export default {
         </div>
         <div ref="container" class="container staggerWorksSection">
             <div class="text no_select">
-                <p @mouseover="isOver(true)" @mouseleave="isOver(false)">
+                <p @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false">
                     from concept to deployment <br>
                     I bring full-stack fluency <br>
                     to every projecy.

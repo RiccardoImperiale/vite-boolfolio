@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-    <div @mouseover="store.isCustomCursor = true" @mouseleave="store.isCustomCursor = false">
+    <div @mouseover="store.isCursorHidden = true" @mouseleave="store.isCursorHidden = false">
         <div id="hero">
             <img ref="hero" class="hero_img" src="/img/hero-profile.jpg" alt="profile image">
             <div class="color_filter"></div>
