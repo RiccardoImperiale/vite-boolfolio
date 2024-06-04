@@ -19,7 +19,7 @@ export default {
 
         animateHeader(header, links);
 
-        // console.log(this.$route.name);
+        console.log(this.$route.name);
         // console.log(this.$route.to);
         // console.log(this.$router.currentRoute.value.name);
         this.$watch(() => this.$route, (to) => {
@@ -62,7 +62,7 @@ export default {
                     <div class="nav_link">ALL PROJECTS</div>
                     <div class="nav_link">ALL PROJECTS</div>
                 </router-link>
-                <router-link class="pill" :to="{ name: 'contact' }">
+                <router-link :class="isHome || 'invert'" class="pill" :to="{ name: 'contact' }">
                     <div class="nav_link">CONTACT</div>
                     <div class="nav_link">CONTACT</div>
                 </router-link>
@@ -76,27 +76,11 @@ export default {
     filter: invert();
 }
 
-.pill {
-    background-color: var(--pf-gray-700);
-    padding: 1.25rem 1.5rem;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 20px;
-    text-decoration: none;
-
-    &:hover .nav_link {
-        transform: translateY(-35px);
-    }
-
-    .nav_link {
-        transform: translateY(-8px);
-        margin-bottom: 10px;
-        display: block;
-        color: var(--pf-lighter);
-        font-size: .9rem;
-        opacity: 0.7;
-        transition: .3s ease;
-    }
+.nav_link {
+    color: var(--pf-lighter);
+    font-size: .9rem;
+    opacity: 0.7;
+    transition: .3s ease;
 }
 
 header {
@@ -133,13 +117,23 @@ header {
                 &:hover .nav_link {
                     transform: translateY(-17px);
                 }
+            }
+
+            .pill {
+                background-color: var(--pf-gray-700);
+                padding: 1.25rem 1.5rem;
+                border-radius: 20px;
+                overflow: hidden;
+                height: 20px;
+                text-decoration: none;
+
+                &:hover .nav_link {
+                    transform: translateY(-35px);
+                }
 
                 .nav_link {
-                    display: block;
-                    color: var(--pf-lighter);
-                    font-size: .9rem;
-                    opacity: 0.7;
-                    transition: .3s ease;
+                    transform: translateY(-8px);
+                    margin-bottom: 10px;
                 }
             }
         }
