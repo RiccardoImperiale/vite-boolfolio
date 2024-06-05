@@ -44,7 +44,7 @@ export default {
                 <img v-else width="18" src="/img/eye-close.png" alt="eye icon">
             </div>
         </div>
-        <div :style="{ width: isInfo ? '110%' : '0' }" class="info_circle">
+        <div :style="{ width: isInfo ? '110%' : '0' }" class="info_circle no_select">
             <div class="info_text">
                 <div class="title">
                     titolo

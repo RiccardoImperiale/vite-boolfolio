@@ -83,7 +83,7 @@ body {
   display: flex;
   justify-content: center;
 
-  & p {
+  p {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--pf-gray-100);
@@ -115,7 +115,7 @@ body {
     transform: translateX(-16px);
     transition: .3s ease;
 
-    & img {
+    img {
       margin-bottom: 5px;
     }
 

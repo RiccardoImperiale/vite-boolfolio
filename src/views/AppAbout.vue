@@ -1,6 +1,4 @@
 <script>
-
-
 export default {
     name: 'AppAbout',
     components: {
@@ -65,7 +63,7 @@ export default {
     display: flex;
     justify-content: center;
 
-    & p {
+    p {
         font-size: 2rem;
         font-weight: 700;
         color: var(--pf-gray-900);

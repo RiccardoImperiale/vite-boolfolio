@@ -101,7 +101,7 @@ header {
 
         .logo {
             mix-blend-mode: color-dodge;
-            opacity: 0.7;
+            opacity: 0.9;
         }
 
         .page_links {

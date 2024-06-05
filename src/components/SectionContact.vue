@@ -6,11 +6,39 @@ export default {
     name: 'SectionContact',
     data() {
         return {
-            store
+            store,
+            stepCount: 0,
+            translation: 'translateX(0%)'
         }
     },
     components: {
         BouncyLine
+    },
+    methods: {
+        submit() {
+            console.log('fwe');
+            this.formReset();
+        },
+        nextStep() {
+            this.stepCount++;
+
+
+            if (this.stepCount === 0) {
+                this.translation = 'translateX(0%)';
+            } else if (this.stepCount === 1) {
+                this.translation = 'translateX(-100%)';
+            } else {
+                this.translation = 'translateX(-200%)';
+            }
+            console.log(this.stepCount);
+        },
+        formReset() {
+            this.stepCount = 0;
+            this.translation = 'translateX(0%)';
+        }
+    },
+    mounted() {
+
     },
 }
 </script>
@@ -18,16 +46,12 @@ export default {
 <template>
     <section id="contact">
         <div class="container">
-            <div class="section_title">
-                <div class="dot"></div>
-                <!-- <div>contact</div> -->
-            </div>
-            <!-- <div class="avatar">
-                <img src="/img/avatar2.png" alt="avatar image">
-            </div> -->
-
+            <!-- TEXT -->
             <div ref="container">
                 <div class="text no_select">
+                    <div class="section_title">
+                        <div class="dot"></div>
+                    </div>
                     <p @mouseover="store.isBiggerCursor = true" @mouseleave="store.isBiggerCursor = false">
                         Let's Keep In Touch
                     </p>
@@ -35,24 +59,33 @@ export default {
             </div>
 
             <!-- FORM -->
-            <form action="">
+            <form @submit.prevent="submit()">
                 <div class="form_inputs">
                     <div class="line">
                         <BouncyLine lineColor="var(--pf-gray-300)" />
                     </div>
-                    <input type="text" placeholder="Type Your Message...">
+                    <div :style="{ transform: translation }" class="slides">
+                        <input class="slide" type="text" placeholder="Type Your Name...">
+                        <input class="slide" type="text" placeholder="Type Your Email...">
+                        <input class="slide" type="text" placeholder="Type Your Message...">
+                    </div>
                 </div>
                 <div class="validation">
                     <div class="step1 step_success"></div>
                     <div class="step2"></div>
                     <div class="step3"></div>
                 </div>
-
-                <button class="btn">
+                <!-- BUTTON -->
+                <button v-if="stepCount === 2" type="submit" class="btn">
                     <div class="btn_in">
-                        <img width="25" src="/img/logo-gray100.png" alt="">
+                        <img width="25" src="/img/logo-gray100.png" alt="logo">
                     </div>
                 </button>
+                <div v-else @click="nextStep()" class="btn">
+                    <div class="btn_in">
+                        <img width="25" src="/img/logo-gray100.png" alt="logo">
+                    </div>
+                </div>
             </form>
         </div>
     </section>
@@ -73,41 +106,42 @@ export default {
         margin-bottom: -20px;
     }
 
-    /* .avatar {
-        width: 85px;
-        height: 85px;
-        overflow: hidden;
-        border-radius: 50%;
-        margin: auto;
-
-        & img {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-        }
-    } */
+    .text {
+        display: block;
+    }
 }
 
 .form_inputs {
+    overflow: hidden;
 
-    & input {
-        height: 168px;
-        width: 100%;
-        background-color: transparent;
-        border: none;
-        text-align: center;
-        font-size: 1.6rem;
-        color: var(--pf-gray-100);
-        font-weight: 500;
-        caret-color: var(--pf-accent-b);
+    .slides {
+        display: flex;
+        transition: transform .5s ease;
 
-        &:focus {
-            outline: none;
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
         }
 
-        &::placeholder {
-            color: var(--pf-gray-300);
-            font-size: 1.2rem;
+        input {
+            height: 168px;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--pf-gray-100);
+            font-weight: 500;
+            caret-color: var(--pf-accent-b);
+
+            &:focus {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: var(--pf-gray-300);
+                font-size: 1.2rem;
+            }
         }
     }
 }
@@ -120,7 +154,7 @@ export default {
     display: flex;
     gap: .5rem;
 
-    & div {
+    div {
         width: calc(100% / 3);
         border-radius: 7.5px;
         height: 100%;
