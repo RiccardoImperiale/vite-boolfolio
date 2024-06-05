@@ -1,28 +1,71 @@
 <script>
 import BouncyLine from "./BouncyLine.vue";
 import { store } from '../store.js'
+import axios from "axios";
 
 export default {
     name: 'SectionContact',
     data() {
         return {
             store,
+            base_api_url: 'http://127.0.0.1:8000',
+            fields: ['name', 'email', 'message'],
+            nameError: null,
+            emailError: null,
+            messageError: null,
+            nameSuccess: null,
+            emailSuccess: null,
+            messageSuccess: null,
             stepCount: 0,
-            translation: 'translateX(0%)'
+            translation: 'translateX(0%)',
+            name: '',
+            email: '',
+            message: '',
+            isLoading: false,
+            errors: null
         }
     },
     components: {
         BouncyLine
     },
     methods: {
-        submit() {
-            console.log('fwe');
-            this.formReset();
+        sendMessage() {
+            this.isLoading = true
+
+            const data = {
+                name: this.name,
+                email: this.email,
+                message: this.message
+            }
+            const url = this.base_api_url + '/api/contacts'
+            axios.post(url, data)
+                .then(res => {
+                    if (res.data.success) {
+                        this.formReset();
+                    } else {
+                        this.fields.forEach(field => {
+                            if (res.data.errors[field]) {
+                                this[`${field}Error`] = true;
+                            }
+                        })
+                    }
+                    this.isLoading = false
+                })
+                .catch(err => console.error(err))
         },
         nextStep() {
             this.stepCount++;
 
-
+            this.updateTranslation()
+        },
+        formReset() {
+            this.stepCount = 0;
+            this.translation = 'translateX(0%)';
+            this.name = ''
+            this.email = ''
+            this.message = ''
+        },
+        updateTranslation() {
             if (this.stepCount === 0) {
                 this.translation = 'translateX(0%)';
             } else if (this.stepCount === 1) {
@@ -30,16 +73,18 @@ export default {
             } else {
                 this.translation = 'translateX(-200%)';
             }
-            console.log(this.stepCount);
         },
-        formReset() {
-            this.stepCount = 0;
-            this.translation = 'translateX(0%)';
+        validate() {
+            const mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            this.name.length > 0 ? this.nameSuccess = true : this.nameSuccess = false;
+            this.email.length > 0 && mailRegex.test(this.email) ? this.emailSuccess = true : this.emailSuccess = false;
+            this.message.length > 0 ? this.messageSuccess = true : this.messageSuccess = false;
+        },
+        setStep(step) {
+            this.stepCount = step;
+            this.updateTranslation();
         }
-    },
-    mounted() {
-
-    },
+    }
 }
 </script>
 
@@ -57,23 +102,28 @@ export default {
                     </p>
                 </div>
             </div>
-
             <!-- FORM -->
-            <form @submit.prevent="submit()">
+            <form @submit.prevent="sendMessage()">
                 <div class="form_inputs">
                     <div class="line">
                         <BouncyLine lineColor="var(--pf-gray-300)" />
                     </div>
                     <div :style="{ transform: translation }" class="slides">
-                        <input class="slide" type="text" placeholder="Type Your Name...">
-                        <input class="slide" type="text" placeholder="Type Your Email...">
-                        <input class="slide" type="text" placeholder="Type Your Message...">
+                        <input @keyup="validate()" v-model="name" name="name" class="slide" type="text"
+                            placeholder="Type Your Name...">
+                        <input @keyup="validate()" v-model="email" name="email" class="slide" type="text"
+                            placeholder="Type Your Email...">
+                        <input @keyup="validate()" v-model="message" name="message" class="slide" type="text"
+                            placeholder="Type Your Message...">
                     </div>
                 </div>
                 <div class="validation">
-                    <div class="step1 step_success"></div>
-                    <div class="step2"></div>
-                    <div class="step3"></div>
+                    <div :class="{ 'step_error': nameError, 'step_success': nameSuccess }" class="step1"
+                        @click="setStep(0)"></div>
+                    <div :class="{ 'step_error': emailError, 'step_success': emailSuccess }" class="step2"
+                        @click="setStep(1)"></div>
+                    <div :class="{ 'step_error': messageError, 'step_success': messageSuccess }" class="step3"
+                        @click="setStep(2)"></div>
                 </div>
                 <!-- BUTTON -->
                 <button v-if="stepCount === 2" type="submit" class="btn">
@@ -159,10 +209,11 @@ export default {
         border-radius: 7.5px;
         height: 100%;
         background-color: var(--pf-gray-300);
+        cursor: pointer;
     }
 
     .step_error {
-        background-color: rgb(167, 0, 0);
+        background-color: rgb(255, 0, 0);
     }
 
     .step_success {
@@ -189,23 +240,5 @@ export default {
         background-color: var(--pf-gray-700);
         z-index: 0;
     }
-
 }
-
-/* .icon3d {
-    rotate: -10deg;
-    left: -2rem;
-    bottom: 0rem;
-    filter: drop-shadow(-40px 40px 10px rgba(0, 0, 0, 0.198));
-}
-
-.violet_blur {
-    left: -20rem;
-    bottom: -16rem;
-}
-
-.violet_blur2 {
-    right: -40rem;
-    top: 25rem;
-} */
 </style>
