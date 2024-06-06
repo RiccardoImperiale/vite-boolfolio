@@ -22,7 +22,8 @@ export default {
             email: '',
             message: '',
             isLoading: false,
-            errors: null
+            errors: {},
+            success: false
         }
     },
     components: {
@@ -38,21 +39,20 @@ export default {
                 message: this.message
             }
             const url = this.base_api_url + '/api/contacts'
+
             axios.post(url, data)
                 .then(res => {
                     if (res.data.success) {
+                        this.success = res.data.message
+                        this.errors = false
                         this.formReset();
                     } else {
                         this.errors = res.data.errors;
-                        if (this.errors['name']) {
 
-                            console.log(this.errors['name']);
-                        } else {
-                            console.log('no');
-                        }
                         this.fields.forEach(field => {
                             if (res.data.errors[field]) {
                                 this[`${field}Error`] = true;
+                                this.errors[field] = res.data.errors[field][0]
                             }
                         })
                     }
@@ -71,6 +71,9 @@ export default {
             this.name = ''
             this.email = ''
             this.message = ''
+            this.nameSuccess = null
+            this.emailSuccess = null
+            this.messageSuccess = null
         },
         updateTranslation() {
             if (this.stepCount === 0) {
@@ -91,12 +94,16 @@ export default {
             this.stepCount = step;
             this.updateTranslation();
         }
-    }
+    },
 }
 </script>
 
 <template>
     <section id="contact">
+        <div v-if="success" class="success_message">
+            <h4>{{ success }}fwefw</h4>
+            <div class="close" @click="success = false">X</div>
+        </div>
         <div class="container">
             <!-- TEXT -->
             <div ref="container">
@@ -125,12 +132,18 @@ export default {
                     </div>
                 </div>
                 <div class="validation">
-                    <div :class="{ 'step_error': nameError, 'step_success': nameSuccess }" class="step1"
-                        @click="setStep(0)"></div>
-                    <div :class="{ 'step_error': emailError, 'step_success': emailSuccess }" class="step2"
-                        @click="setStep(1)"></div>
-                    <div :class="{ 'step_error': messageError, 'step_success': messageSuccess }" class="step3"
-                        @click="setStep(2)"></div>
+                    <div :class="{ 'step_error': nameError, 'step_success': nameSuccess }" class="step step1"
+                        @click="setStep(0)">
+                        <div v-if="errors.name" class="error_message">{{ errors.name }}</div>
+                    </div>
+                    <div :class="{ 'step_error': emailError, 'step_success': emailSuccess }" class="step step2"
+                        @click="setStep(1)">
+                        <div v-if="errors.email" class="error_message">{{ errors.email }}</div>
+                    </div>
+                    <div :class="{ 'step_error': messageError, 'step_success': messageSuccess }" class="step step3"
+                        @click="setStep(2)">
+                        <div v-if="errors.message" class="error_message">{{ errors.message }}</div>
+                    </div>
                 </div>
                 <!-- BUTTON -->
                 <button v-if="stepCount === 2" type="submit" class="btn">
@@ -162,14 +175,16 @@ export default {
     .line {
         margin-bottom: -20px;
         padding-top: 50px;
-        /* background-color: aqua; */
-        z-index: 6;
     }
 
     .text {
         display: block;
         padding: 0;
 
+        p {
+            width: 40%;
+            margin: auto;
+        }
     }
 }
 
@@ -201,7 +216,7 @@ export default {
             }
 
             &::placeholder {
-                color: var(--pf-gray-300);
+                color: var(--pf-gray-600);
                 font-size: 1.2rem;
             }
         }
@@ -216,12 +231,21 @@ export default {
     display: flex;
     gap: .5rem;
 
-    div {
+    .step {
         width: calc(100% / 3);
         border-radius: 7.5px;
         height: 100%;
         background-color: var(--pf-gray-300);
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        .error_message {
+            color: var(--pf-gray-300);
+            margin-top: 15px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
     }
 
     .step_error {
@@ -234,7 +258,6 @@ export default {
 }
 
 .btn {
-    z-index: 11;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -245,12 +268,32 @@ export default {
 
     .btn_in {
         transform: translateX(0);
-
     }
 
     &:hover {
         background-color: var(--pf-gray-700);
         z-index: 0;
+    }
+}
+
+.success_message {
+    background-color: rgba(77, 255, 0, 0.241);
+    background-color: var(--pf-gray-300);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.42);
+    /* backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(10px); */
+    position: absolute;
+    top: 5rem;
+    height: 4rem;
+    width: 60%;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 3rem;
+
+    .close {
+        cursor: pointer;
     }
 }
 </style>
