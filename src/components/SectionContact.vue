@@ -70,8 +70,10 @@ export default {
                 this.translation = 'translateX(0%)';
             } else if (this.stepCount === 1) {
                 this.translation = 'translateX(-100%)';
-            } else {
+            } else if (this.stepCount === 2) {
                 this.translation = 'translateX(-200%)';
+            } else {
+                this.sendMessage()
             }
         },
         validate() {
