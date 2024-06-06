@@ -161,10 +161,15 @@ export default {
 
     .line {
         margin-bottom: -20px;
+        padding-top: 50px;
+        /* background-color: aqua; */
+        z-index: 6;
     }
 
     .text {
         display: block;
+        padding: 0;
+
     }
 }
 
