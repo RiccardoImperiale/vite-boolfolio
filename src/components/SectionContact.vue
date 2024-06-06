@@ -10,9 +10,6 @@ export default {
             store,
             base_api_url: 'http://127.0.0.1:8000',
             fields: ['name', 'email', 'message'],
-            nameError: null,
-            emailError: null,
-            messageError: null,
             nameSuccess: null,
             emailSuccess: null,
             messageSuccess: null,
@@ -51,7 +48,6 @@ export default {
 
                         this.fields.forEach(field => {
                             if (res.data.errors[field]) {
-                                this[`${field}Error`] = true;
                                 this.errors[field] = res.data.errors[field][0]
                             }
                         })
@@ -100,8 +96,9 @@ export default {
 
 <template>
     <section id="contact">
-        <div v-if="success" class="success_message">
-            <h4>{{ success }}fwefw</h4>
+        <div v-if="success" class="success_message no_select" @mouseover="store.isCursorHidden = true"
+            @mouseleave="store.isCursorHidden = false">
+            <h4>{{ success }}</h4>
             <div class="close" @click="success = false">X</div>
         </div>
         <div class="container">
@@ -131,16 +128,17 @@ export default {
                             class="slide" type="text" placeholder="Type Your Message...">
                     </div>
                 </div>
-                <div class="validation">
-                    <div :class="{ 'step_error': nameError, 'step_success': nameSuccess }" class="step step1"
+                <div class="validation" @mouseover="store.isCursorHidden = true"
+                    @mouseleave="store.isCursorHidden = false">
+                    <div :class="{ 'step_error': errors.name, 'step_success': nameSuccess }" class="step step1"
                         @click="setStep(0)">
                         <div v-if="errors.name" class="error_message">{{ errors.name }}</div>
                     </div>
-                    <div :class="{ 'step_error': emailError, 'step_success': emailSuccess }" class="step step2"
+                    <div :class="{ 'step_error': errors.email, 'step_success': emailSuccess }" class="step step2"
                         @click="setStep(1)">
                         <div v-if="errors.email" class="error_message">{{ errors.email }}</div>
                     </div>
-                    <div :class="{ 'step_error': messageError, 'step_success': messageSuccess }" class="step step3"
+                    <div :class="{ 'step_error': errors.message, 'step_success': messageSuccess }" class="step step3"
                         @click="setStep(2)">
                         <div v-if="errors.message" class="error_message">{{ errors.message }}</div>
                     </div>
@@ -294,6 +292,7 @@ export default {
 
     .close {
         cursor: pointer;
+        font-weight: bold;
     }
 }
 </style>
