@@ -43,6 +43,13 @@ export default {
                     if (res.data.success) {
                         this.formReset();
                     } else {
+                        this.errors = res.data.errors;
+                        if (this.errors['name']) {
+
+                            console.log(this.errors['name']);
+                        } else {
+                            console.log('no');
+                        }
                         this.fields.forEach(field => {
                             if (res.data.errors[field]) {
                                 this[`${field}Error`] = true;
@@ -70,10 +77,8 @@ export default {
                 this.translation = 'translateX(0%)';
             } else if (this.stepCount === 1) {
                 this.translation = 'translateX(-100%)';
-            } else if (this.stepCount === 2) {
-                this.translation = 'translateX(-200%)';
             } else {
-                this.sendMessage()
+                this.translation = 'translateX(-200%)';
             }
         },
         validate() {
@@ -115,7 +120,7 @@ export default {
                             type="text" placeholder="Type Your Name...">
                         <input @keyup="validate()" @keyup.enter="nextStep()" v-model="email" name="email" class="slide"
                             type="text" placeholder="Type Your Email...">
-                        <input @keyup="validate()" @keyup.enter="nextStep()" v-model="message" name="message"
+                        <input @keyup="validate()" @keyup.enter="sendMessage()" v-model="message" name="message"
                             class="slide" type="text" placeholder="Type Your Message...">
                     </div>
                 </div>
