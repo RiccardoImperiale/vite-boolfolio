@@ -109,12 +109,12 @@ export default {
                         <BouncyLine lineColor="var(--pf-gray-300)" />
                     </div>
                     <div :style="{ transform: translation }" class="slides">
-                        <input @keyup="validate()" v-model="name" name="name" class="slide" type="text"
-                            placeholder="Type Your Name...">
-                        <input @keyup="validate()" v-model="email" name="email" class="slide" type="text"
-                            placeholder="Type Your Email...">
-                        <input @keyup="validate()" v-model="message" name="message" class="slide" type="text"
-                            placeholder="Type Your Message...">
+                        <input @keyup="validate()" @keyup.enter="nextStep()" v-model="name" name="name" class="slide"
+                            type="text" placeholder="Type Your Name...">
+                        <input @keyup="validate()" @keyup.enter="nextStep()" v-model="email" name="email" class="slide"
+                            type="text" placeholder="Type Your Email...">
+                        <input @keyup="validate()" @keyup.enter="nextStep()" v-model="message" name="message"
+                            class="slide" type="text" placeholder="Type Your Message...">
                     </div>
                 </div>
                 <div class="validation">
