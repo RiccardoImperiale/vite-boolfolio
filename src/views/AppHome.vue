@@ -12,7 +12,7 @@ export default {
         SectionAbout,
         SectionWorks,
         AnimationEnd,
-        SectionContact,
+        SectionContact
     }
 }
 </script>

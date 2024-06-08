@@ -160,12 +160,16 @@ export default {
                 </div>
             </form>
         </div>
+        <!-- SOCIAL -->
+        <div class="socials">
+            <img width="35" src="/img/logo-github-wt.png" alt="">
+            <img class="logo_linkedin" width="30" src="/img/logo-linkedin-light.png" alt="">
+        </div>
     </section>
 </template>
 
 <style scoped>
 #contact {
-    padding-bottom: 5rem;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -297,15 +301,11 @@ export default {
 
     .btn_in {
         transform: translateX(0);
-
-
     }
 
     &:hover {
         background-color: var(--pf-gray-900);
     }
-
-
 }
 
 .success_message {
@@ -328,5 +328,17 @@ export default {
         cursor: pointer;
         font-weight: bold;
     }
+}
+
+.socials {
+    width: 100%;
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* .logo_linkedin{
+
+    } */
 }
 </style>
