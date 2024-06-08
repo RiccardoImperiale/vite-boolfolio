@@ -272,7 +272,7 @@ export default {
         aspect-ratio: 1;
         border-radius: 50%;
         position: absolute;
-        top: 2.5rem;
+        top: 2.4rem;
     }
 }
 
