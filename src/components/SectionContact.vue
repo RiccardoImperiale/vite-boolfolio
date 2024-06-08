@@ -161,9 +161,11 @@ export default {
             </form>
         </div>
         <!-- SOCIAL -->
-        <div class="socials">
-            <img width="30" src="/img/logo-github-wt.png" alt="">
-            <img width="25" src="/img/logo-linkedin-light.png" alt="">
+        <div class="socials" @mouseover="store.isCursorHidden = true" @mouseleave="store.isCursorHidden = false">
+            <a href="https://github.com/RiccardoImperiale" target="_blank"><img width="30" src="/img/logo-github-wt.png"
+                    alt="git hub logo"></a>
+            <a href="https://www.linkedin.com/in/riccardoimperiale/" target="_blank"><img width="25"
+                    src="/img/logo-linkedin-light.png" alt="linkedin logo"></a>
         </div>
     </section>
 </template>
@@ -336,6 +338,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
+
+    img {
+        cursor: pointer;
+    }
 }
 </style>
