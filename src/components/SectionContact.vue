@@ -260,12 +260,13 @@ export default {
     }
 
     .dot_step {
-        background-color: var(--pf-accent-b);
-        height: 6px;
+        background-color: var(--pf-lighter);
+        /* filter: blur(1px); */
+        height: 5px;
         aspect-ratio: 1;
         border-radius: 50%;
         position: absolute;
-        bottom: 1rem;
+        bottom: 1.2rem;
     }
 }
 
