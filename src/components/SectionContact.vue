@@ -231,7 +231,7 @@ export default {
 }
 
 .validation {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     padding-bottom: 0.5rem;
     width: 100%;
     height: 15px;
@@ -266,12 +266,11 @@ export default {
 
     .dot_step {
         background-color: var(--pf-lighter);
-        /* filter: blur(1px); */
         height: 5px;
         aspect-ratio: 1;
         border-radius: 50%;
         position: absolute;
-        bottom: 1.2rem;
+        top: 2.5rem;
     }
 }
 
