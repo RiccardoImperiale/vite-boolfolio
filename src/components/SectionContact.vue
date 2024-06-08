@@ -162,8 +162,8 @@ export default {
         </div>
         <!-- SOCIAL -->
         <div class="socials">
-            <img width="35" src="/img/logo-github-wt.png" alt="">
-            <img class="logo_linkedin" width="30" src="/img/logo-linkedin-light.png" alt="">
+            <img width="30" src="/img/logo-github-wt.png" alt="">
+            <img width="25" src="/img/logo-linkedin-light.png" alt="">
         </div>
     </section>
 </template>
@@ -189,6 +189,7 @@ export default {
 
         p {
             width: 40%;
+            white-space: nowrap;
             margin: auto;
         }
     }
@@ -336,9 +337,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    /* .logo_linkedin{
-
-    } */
+    gap: 1.5rem;
 }
 </style>
