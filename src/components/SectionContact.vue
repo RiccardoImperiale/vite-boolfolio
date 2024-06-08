@@ -133,14 +133,17 @@ export default {
                     <div :class="{ 'step_error': errors.name, 'step_success': nameSuccess }" class="step step1"
                         @click="setStep(0)">
                         <div v-if="errors.name" class="error_message">{{ errors.name }}</div>
+                        <div v-if="stepCount === 0" class="dot_step"></div>
                     </div>
                     <div :class="{ 'step_error': errors.email, 'step_success': emailSuccess }" class="step step2"
                         @click="setStep(1)">
                         <div v-if="errors.email" class="error_message">{{ errors.email }}</div>
+                        <div v-if="stepCount === 1" class="dot_step"></div>
                     </div>
                     <div :class="{ 'step_error': errors.message, 'step_success': messageSuccess }" class="step step3"
                         @click="setStep(2)">
                         <div v-if="errors.message" class="error_message">{{ errors.message }}</div>
+                        <div v-if="stepCount === 2" class="dot_step"></div>
                     </div>
                 </div>
                 <!-- BUTTON -->
@@ -238,6 +241,7 @@ export default {
         cursor: pointer;
         display: flex;
         justify-content: center;
+        position: relative;
 
         .error_message {
             color: var(--pf-gray-300);
@@ -253,6 +257,15 @@ export default {
 
     .step_success {
         background-color: var(--pf-accent-b);
+    }
+
+    .dot_step {
+        background-color: var(--pf-accent-b);
+        height: 6px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 1rem;
     }
 }
 
