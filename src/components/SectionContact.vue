@@ -146,7 +146,8 @@ export default {
                 <!-- BUTTON -->
                 <button v-if="stepCount === 2" type="submit" class="btn">
                     <div class="btn_in">
-                        <img width="25" src="/img/logo-gray100.png" alt="logo">
+                        <img style="margin-bottom: 0;margin-left: 5px;" width="26" src="/img/send-icon.png"
+                            alt="airplane icon">
                     </div>
                 </button>
                 <div v-else @click="nextStep()" class="btn">
@@ -264,14 +265,33 @@ export default {
     height: 75px;
     position: relative;
 
+    &::after {
+        content: '';
+        width: 80px;
+        height: 80px;
+        background-color: var(--pf-gray-900);
+        border-radius: 50%;
+        position: absolute;
+        transform: translate(-80px, 50px);
+        z-index: -1;
+        transition: .2s ease;
+    }
+
+    &:hover::after {
+        transform: translate(0px, 0px);
+    }
+
     .btn_in {
         transform: translateX(0);
+
+
     }
 
     &:hover {
-        background-color: var(--pf-gray-700);
-        z-index: 0;
+        background-color: var(--pf-gray-900);
     }
+
+
 }
 
 .success_message {
