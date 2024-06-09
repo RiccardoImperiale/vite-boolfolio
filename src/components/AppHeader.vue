@@ -66,6 +66,10 @@ export default {
                     <div class="nav_link">CONTACT</div>
                     <div class="nav_link">CONTACT</div>
                 </router-link>
+                <!-- <a href="#contact" class="pill">
+                            <div class="nav_link">CONTACT</div>
+                            <div class="nav_link">CONTACT</div>
+                        </a> -->
             </div>
         </nav>
     </header>

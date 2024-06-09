@@ -114,20 +114,22 @@ export default {
                 </div>
             </div>
             <!-- FORM -->
-            <form @submit.prevent="sendMessage()">
+            <form @submit.prevent="sendMessage()" autocomplete="off">
                 <div class="form_inputs">
                     <div class="line">
                         <BouncyLine lineColor="var(--pf-gray-300)" />
                     </div>
+                    <!-- INPUT -->
                     <div :style="{ transform: translation }" class="slides">
                         <input @keyup="validate()" @keyup.enter="nextStep()" v-model="name" name="name" class="slide"
                             type="text" placeholder="Type Your Name...">
                         <input @keyup="validate()" @keyup.enter="nextStep()" v-model="email" name="email" class="slide"
                             type="text" placeholder="Type Your Email...">
-                        <input @keyup="validate()" @keyup.enter="sendMessage()" v-model="message" name="message"
-                            class="slide" type="text" placeholder="Type Your Message...">
+                        <input @keyup="validate()" v-model="message" name="message" class="slide" type="text"
+                            placeholder="Type Your Message...">
                     </div>
                 </div>
+                <!-- VALIDATION -->
                 <div class="validation" @mouseover="store.isCursorHidden = true"
                     @mouseleave="store.isCursorHidden = false">
                     <div :class="{ 'step_error': errors.name, 'step_success': nameSuccess }" class="step step1"
@@ -171,6 +173,14 @@ export default {
 </template>
 
 <style scoped>
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--pf-gray-800) inset;
+    -webkit-text-fill-color: var(--pf-gray-100);
+    z-index: -1;
+} */
+
 #contact {
     height: 100vh;
     display: flex;
@@ -289,7 +299,7 @@ export default {
         content: '';
         width: 80px;
         height: 80px;
-        background-color: var(--pf-gray-900);
+        background-color: var(--pf-gray-700);
         border-radius: 50%;
         position: absolute;
         transform: translate(-80px, 50px);
