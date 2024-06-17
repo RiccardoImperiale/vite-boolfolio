@@ -8,7 +8,6 @@ export default {
     data() {
         return {
             store,
-            base_api_url: 'http://127.0.0.1:8000',
             fields: ['name', 'email', 'message'],
             nameSuccess: null,
             emailSuccess: null,
@@ -35,7 +34,7 @@ export default {
                 email: this.email,
                 message: this.message
             }
-            const url = this.base_api_url + '/api/contacts'
+            const url = store.base_api_url + '/api/contacts'
 
             axios.post(url, data)
                 .then(res => {
@@ -198,11 +197,13 @@ input:-webkit-autofill:focus {
     .text {
         display: block;
         padding: 0;
+        margin: auto;
 
         p {
-            width: 40%;
+            width: 100%;
             white-space: nowrap;
             margin: auto;
+            text-align: center;
         }
     }
 }

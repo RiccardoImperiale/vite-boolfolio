@@ -12,7 +12,8 @@ export default {
         return {
             base_projects_url: '/api/featured',
             projects: [],
-            store
+            store,
+            isImageBlur: false
         }
     },
     methods: {
@@ -25,7 +26,7 @@ export default {
                     store.loading = false
                 })
                 .catch(err => console.error(err))
-        }
+        },
     },
     mounted() {
         let url = store.base_api_url + this.base_projects_url;

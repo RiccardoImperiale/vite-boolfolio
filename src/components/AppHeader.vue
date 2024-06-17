@@ -20,7 +20,7 @@ export default {
         animateHeader(header, links);
 
         this.$watch(() => this.$route, (to) => {
-            if (to.name === 'home') {
+            if (to.name === 'home' || to.name === 'contact') {
                 this.isHome = true;
             } else {
                 this.isHome = false;
@@ -42,10 +42,10 @@ export default {
                     <div class="nav_link">HOME</div>
                     <div class="nav_link">HOME</div>
                 </router-link>
-                <router-link class="link_container" :to="{ name: 'about' }">
+                <!-- <router-link class="link_container" :to="{ name: 'about' }">
                     <div class="nav_link">ABOUT</div>
                     <div class="nav_link">ABOUT</div>
-                </router-link>
+                </router-link> -->
                 <router-link class="link_container" :to="{ name: 'projects' }">
                     <div class="nav_link">ALL PROJECTS</div>
                     <div class="nav_link">ALL PROJECTS</div>
@@ -54,10 +54,10 @@ export default {
                     <div class="nav_link">CONTACT</div>
                     <div class="nav_link">CONTACT</div>
                 </router-link>
-                <!-- <a href="#contact" class="pill">
-                            <div class="nav_link">CONTACT</div>
-                            <div class="nav_link">CONTACT</div>
-                        </a> -->
+                <!-- <a href="#contact" :class="isHome || 'invert'" class="pill">
+                    <div class="nav_link">CONTACT</div>
+                    <div class="nav_link">CONTACT</div>
+                </a> -->
             </div>
         </nav>
     </header>

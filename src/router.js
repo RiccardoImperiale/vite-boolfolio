@@ -16,11 +16,11 @@ const router = createRouter({
             component: AppHome,
             // meta: { headerColor: 'transparent' }
         },
-        {
-            path: '/about',
-            name: 'about',
-            component: AppAbout
-        },
+        // {
+        //     path: '/about',
+        //     name: 'about',
+        //     component: AppAbout
+        // },
         {
             path: '/projects',
             name: 'projects',
