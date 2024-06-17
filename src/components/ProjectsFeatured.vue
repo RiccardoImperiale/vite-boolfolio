@@ -40,7 +40,9 @@ export default {
         <div v-if="!store.loading" class="projects">
             <template v-for="project in projects" :key="project.id">
                 <!-- <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }"> -->
-                <ProjectCard class="project_card" :imageSrc="base_api_url + '/storage/' + project.image" />
+                <ProjectCard v-if="project.image.startsWith('/img/')" class="project_card"
+                    :imageSrc="base_api_url + project.image" />
+                <ProjectCard v-else class="project_card" :imageSrc="base_api_url + '/storage/' + project.image" />
                 <!-- </router-link> -->
             </template>
         </div>
