@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             store,
-            isHome: null,
+            isNavWhite: null,
         }
     },
     mounted() {
@@ -21,9 +21,9 @@ export default {
 
         this.$watch(() => this.$route, (to) => {
             if (to.name === 'home' || to.name === 'contact') {
-                this.isHome = true;
+                this.isNavWhite = true;
             } else {
-                this.isHome = false;
+                this.isNavWhite = false;
             }
         });
     }
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-    <header :class="isHome || 'invert'" ref="header" @mouseover="store.isCursorHidden = true"
+    <header :class="isNavWhite || 'invert'" ref="header" @mouseover="store.isCursorHidden = true"
         @mouseleave="store.isCursorHidden = false">
         <nav ref="nav">
             <router-link class="nav_link" :to="{ name: 'home' }">
@@ -50,11 +50,11 @@ export default {
                     <div class="nav_link">ALL PROJECTS</div>
                     <div class="nav_link">ALL PROJECTS</div>
                 </router-link>
-                <router-link :class="isHome || 'invert'" class="pill" :to="{ name: 'contact' }">
+                <router-link :class="isNavWhite || 'invert'" class="pill" :to="{ name: 'contact' }">
                     <div class="nav_link">CONTACT</div>
                     <div class="nav_link">CONTACT</div>
                 </router-link>
-                <!-- <a href="#contact" :class="isHome || 'invert'" class="pill">
+                <!-- <a href="#contact" :class="isNavWhite || 'invert'" class="pill">
                     <div class="nav_link">CONTACT</div>
                     <div class="nav_link">CONTACT</div>
                 </a> -->

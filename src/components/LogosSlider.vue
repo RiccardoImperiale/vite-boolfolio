@@ -11,27 +11,55 @@ export default {
     },
     data() {
         return {
-            logos: [
-
-            ]
+            logos: [],
+            perPage: 8,
+            splideInstance: null,
         }
     },
     mounted() {
-        const splide = new Splide('.splide', {
-            type: 'loop',
-            arrows: false,
-            pagination: false,
-            drag: 'free',
-            // gap: '1rem',
-            focus: 'center',
-            perPage: 8,
-            autoScroll: {
-                speed: 0.5,
-            },
-        });
-
-        splide.mount({ AutoScroll });
+        this.updatePerPage();
+        window.addEventListener('resize', this.updatePerPage);
     },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.updatePerPage);
+        if (this.splideInstance) {
+            this.splideInstance.destroy();
+        }
+    },
+    methods: {
+        initSplide() {
+            if (this.splideInstance) {
+                this.splideInstance.destroy();
+            }
+
+            this.splideInstance = new Splide('.splide', {
+                type: 'loop',
+                arrows: false,
+                pagination: false,
+                drag: 'free',
+                focus: 'center',
+                perPage: this.perPage,
+                autoScroll: {
+                    speed: 0.5,
+                },
+            });
+
+            this.splideInstance.mount({ AutoScroll });
+        },
+        updatePerPage() {
+            if (window.innerWidth < 700) {
+                this.perPage = 3;
+            } else if (window.innerWidth < 970) {
+                this.perPage = 5;
+            } else if (window.innerWidth < 1280) {
+                this.perPage = 7;
+            } else {
+                this.perPage = 8;
+            }
+
+            this.initSplide();
+        }
+    }
 };
 </script>
 

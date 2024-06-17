@@ -28,6 +28,8 @@ html {
   scrollbar-color: var(--pf-gray-300) var(--pf-gray-800);
   scrollbar-width: thin;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+
 }
 
 body {
