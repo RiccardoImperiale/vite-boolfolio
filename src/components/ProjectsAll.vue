@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
+import { store } from '../store';
 
 export default {
     name: 'ProjectsAll',
@@ -9,10 +10,10 @@ export default {
     },
     data() {
         return {
-            base_api_url: 'http://127.0.0.1:8000',
             base_projects_url: '/api/projects',
             projects: [],
-            loading: true
+            loading: true,
+            store
         }
     },
     methods: {
@@ -20,7 +21,6 @@ export default {
             axios
                 .get(url)
                 .then(res => {
-                    console.log(res);
                     this.projects = res.data.projects
                     this.loading = false
                 })
@@ -33,12 +33,12 @@ export default {
             this.callApi(url);
         },
         goTo(page) {
-            const url = this.base_api_url + this.base_projects_url + `?page=${page}`
+            const url = store.base_api_url + this.base_projects_url + `?page=${page}`
             this.callApi(url)
         }
     },
     mounted() {
-        let url = this.base_api_url + this.base_projects_url;
+        let url = store.base_api_url + this.base_projects_url;
         this.callApi(url);
     },
 }
@@ -48,10 +48,7 @@ export default {
     <div class="container projects_container">
         <div v-if="!loading" class="projects">
             <template v-for="project in projects.data" :key="project.id">
-                <!-- <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }"> -->
                 <ProjectCard class="project_card" :slug="project.slug" :imageSrc="project.image" />
-                <!-- <ProjectCard v-else class="project_card" :imageSrc="base_api_url + '/storage/' + project.image" /> -->
-                <!-- </router-link> -->
             </template>
         </div>
         <div class="loader" v-else>

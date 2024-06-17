@@ -10,7 +10,6 @@ export default {
     },
     data() {
         return {
-            base_api_url: 'http://127.0.0.1:8000',
             base_projects_url: '/api/featured',
             projects: [],
             store
@@ -29,7 +28,7 @@ export default {
         }
     },
     mounted() {
-        let url = this.base_api_url + this.base_projects_url;
+        let url = store.base_api_url + this.base_projects_url;
         this.callApi(url);
     }
 }
@@ -39,12 +38,10 @@ export default {
     <div class="container projects_container">
         <div v-if="!store.loading" class="projects">
             <template v-for="project in projects" :key="project.id">
-                <!-- <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }"> -->
                 <ProjectCardFeatured v-if="project.image.startsWith('/img/')" class="project_card"
-                    :imageSrc="base_api_url + project.image" />
+                    :imageSrc="store.base_api_url + project.image" />
                 <ProjectCardFeatured v-else class="project_card"
-                    :imageSrc="base_api_url + '/storage/' + project.image" />
-                <!-- </router-link> -->
+                    :imageSrc="store.base_api_url + '/storage/' + project.image" />
             </template>
         </div>
         <div class="loader" v-else>

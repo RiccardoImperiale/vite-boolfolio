@@ -174,9 +174,6 @@ export default {
         overflow: hidden;
         position: relative;
         background-color: var(--pf-gray-100);
-        /* background: rgba(255, 255, 255, 0.159);
-        backdrop-filter: blur(2.5px);
-        -webkit-backdrop-filter: blur(2px); */
 
         .logo {
             top: 0;
