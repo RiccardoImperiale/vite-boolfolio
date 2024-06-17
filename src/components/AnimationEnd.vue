@@ -12,7 +12,7 @@ export default {
         }
     },
     mounted() {
-        const canvas = this.$refs.canvas2;
+        const canvas = this.$refs.canvas;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
@@ -56,11 +56,11 @@ export default {
 </script>
 
 <template>
-    <canvas ref="canvas2" class="canvas2"></canvas>
+    <canvas ref="canvas" class="canvas"></canvas>
 </template>
 
 <style scoped>
-.canvas2 {
+.canvas {
     /* border: 4px solid red; */
     /* opacity: 0.5; */
     width: 100vw;
