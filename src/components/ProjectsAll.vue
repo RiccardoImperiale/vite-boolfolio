@@ -48,11 +48,10 @@ export default {
     <div class="container projects_container">
         <div v-if="!loading" class="projects">
             <template v-for="project in projects.data" :key="project.id">
-                <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }">
-                    <ProjectCard v-if="project.image.startsWith('/img/')" class="project_card"
-                        :imageSrc="base_api_url + project.image" />
-                    <ProjectCard v-else class="project_card" :imageSrc="base_api_url + '/storage/' + project.image" />
-                </router-link>
+                <!-- <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }"> -->
+                <ProjectCard class="project_card" :slug="project.slug" :imageSrc="project.image" />
+                <!-- <ProjectCard v-else class="project_card" :imageSrc="base_api_url + '/storage/' + project.image" /> -->
+                <!-- </router-link> -->
             </template>
         </div>
         <div class="loader" v-else>
@@ -87,6 +86,10 @@ export default {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+
+        .project_card {
+            width: calc(100% / 3 - 1rem);
+        }
     }
 }
 
