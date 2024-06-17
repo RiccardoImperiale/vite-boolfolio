@@ -1,12 +1,12 @@
 <script>
 import { store } from '../store.js'
 import axios from 'axios';
-import ProjectCard from './ProjectCard.vue';
+import ProjectCardFeatured from './ProjectCardFeatured.vue';
 
 export default {
     name: 'ProjectsFeatured',
     components: {
-        ProjectCard
+        ProjectCardFeatured
     },
     data() {
         return {
@@ -40,9 +40,10 @@ export default {
         <div v-if="!store.loading" class="projects">
             <template v-for="project in projects" :key="project.id">
                 <!-- <router-link class="router_links" :to="{ name: 'project', params: { slug: project.slug } }"> -->
-                <ProjectCard v-if="project.image.startsWith('/img/')" class="project_card"
+                <ProjectCardFeatured v-if="project.image.startsWith('/img/')" class="project_card"
                     :imageSrc="base_api_url + project.image" />
-                <ProjectCard v-else class="project_card" :imageSrc="base_api_url + '/storage/' + project.image" />
+                <ProjectCardFeatured v-else class="project_card"
+                    :imageSrc="base_api_url + '/storage/' + project.image" />
                 <!-- </router-link> -->
             </template>
         </div>
