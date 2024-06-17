@@ -19,9 +19,6 @@ export default {
 
         animateHeader(header, links);
 
-        console.log(this.$route.name);
-        // console.log(this.$route.to);
-        // console.log(this.$router.currentRoute.value.name);
         this.$watch(() => this.$route, (to) => {
             if (to.name === 'home') {
                 this.isHome = true;
@@ -29,16 +26,7 @@ export default {
                 this.isHome = false;
             }
         });
-    },
-    // watch: {
-    //     $route(to) {
-    //         if (to.name === 'home') {
-    //             this.isHome = true;
-    //         } else {
-    //             this.isHome = false;
-    //         }
-    //     }
-    // }
+    }
 }
 </script>
 
